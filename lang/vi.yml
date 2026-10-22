@@ -1,4 +1,4 @@
-# CoreProtect Language File (vi)
+# CoreArchive Language File (vi)
 
 ACTION_NOT_SUPPORTED: "Hành động đó không được hỗ trợ."
 AMOUNT_BLOCK: "{0} {khối|khối}"
@@ -133,7 +133,7 @@ NO_RESULTS_PAGE: "Không {kết quả|dữ liệu} được tìm thấy cho tran
 NO_ROLLBACK: "Không {đang chờ xử lý|trước đó} khôi phục / khôi phục được tìm thấy."
 PATCH_INTERRUPTED: "Nâng cấp bị gián đoạn. Sẽ thử lại khi khởi động lại."
 PATCH_OUTDATED_1: "Không thể nâng cấp cơ sở dữ liệu cũ hơn {0}."
-PATCH_OUTDATED_2: "Vui lòng nâng cấp bằng phiên bản được hỗ trợ của CoreProtect."
+PATCH_OUTDATED_2: "Vui lòng nâng cấp bằng phiên bản được hỗ trợ của CoreArchive."
 PATCH_PROCESSING: "Xử lý dữ liệu mới. Vui lòng chờ..."
 PATCH_SKIP_UPDATE: "Bỏ qua {bảng|chỉ mục} {cập nhật|tạo|loại bỏ} trên {0}."
 PATCH_STARTED: "Biểu diễn {0} nâng cấp. Vui lòng chờ..."

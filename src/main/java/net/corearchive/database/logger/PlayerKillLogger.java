@@ -1,0 +1,56 @@
+package net.corearchive.database.logger;
+
+import net.corearchive.CoreArchive;
+import org.bukkit.Bukkit;
+import org.bukkit.Location;
+import org.bukkit.entity.EntityType;
+
+import net.corearchive.config.Config;
+import net.corearchive.config.ConfigHandler;
+import net.corearchive.database.Database;
+import net.corearchive.database.ConsumerWriteBatch;
+import net.corearchive.database.statement.BlockStatement;
+import net.corearchive.database.statement.UserStatement;
+import net.corearchive.event.CoreProtectPreLogEvent;
+import net.corearchive.model.action.LookupActions;
+import net.corearchive.utility.WorldUtils;
+
+public class PlayerKillLogger {
+
+    private PlayerKillLogger() {
+        throw new IllegalStateException("Database class");
+    }
+
+    public static void log(ConsumerWriteBatch preparedStmt, int batchCount, String user, Location location, String player) {
+        try {
+            if (ConfigHandler.isBlacklisted(user)) {
+                return;
+            }
+
+            int playerId = UserStatement.getId(preparedStmt, player, true);
+
+            Location initialLocation = location.clone();
+            CoreProtectPreLogEvent event = new CoreProtectPreLogEvent(user, initialLocation, CoreProtectPreLogEvent.Action.PLAYER_KILL, LookupActions.ENTITY_KILL, null, EntityType.PLAYER, null);
+            if (Config.getGlobal().API_ENABLED && !Bukkit.isPrimaryThread()) {
+                CoreArchive.getInstance().getServer().getPluginManager().callEvent(event);
+            }
+
+            if (event.isCancelled()) {
+                return;
+            }
+
+            int userId = UserStatement.getId(preparedStmt, event.getUser(), true);
+            Location eventLocation = event.getLocation();
+            int wid = WorldUtils.getWorldId(eventLocation.getWorld().getName());
+            int time = (int) (System.currentTimeMillis() / 1000L);
+            int x = eventLocation.getBlockX();
+            int y = eventLocation.getBlockY();
+            int z = eventLocation.getBlockZ();
+            BlockStatement.insert(preparedStmt, batchCount, time, userId, wid, x, y, z, 0, playerId, null, null, LookupActions.ENTITY_KILL, 0);
+        }
+        catch (Exception e) {
+            Database.handleWriteFailure(e);
+        }
+    }
+
+}

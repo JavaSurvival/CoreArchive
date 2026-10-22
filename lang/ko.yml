@@ -1,4 +1,4 @@
-# CoreProtect Language File (ko)
+# CoreArchive Language File (ko)
 
 ACTION_NOT_SUPPORTED: "이 명령어는 해당 작업을 지원하지 않습니다."
 AMOUNT_BLOCK: "{0}개의 {블록|블록}"
@@ -137,7 +137,7 @@ NO_RESULTS_PAGE: "해당 페이지에 대한 {결과|데이터}를 찾을 수 �
 NO_ROLLBACK: "{보류 중인|이전} 롤백/복원을 찾을 수 없습니다."
 PATCH_INTERRUPTED: "업그레이드가 중단되었습니다. 서버를 재시작하면 재시도합니다."
 PATCH_OUTDATED_1: "{0}보다 오래된 데이터베이스를 업그레이드할 수 없습니다."
-PATCH_OUTDATED_2: "지원되는 CoreProtect 버전으로 업그레이드하세요."
+PATCH_OUTDATED_2: "지원되는 CoreArchive 버전으로 업그레이드하세요."
 PATCH_PROCESSING: "새 데이터를 처리 중입니다. 잠시 기다려 주세요..."
 PATCH_SKIP_UPDATE: "{0}에서 {테이블|인덱스} {업데이트|생성|제거}를 건너뜁니다."
 PATCH_STARTED: "{0} 업그레이드를 수행 중입니다. 잠시 기다려 주세요..."

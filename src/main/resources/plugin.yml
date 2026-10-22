@@ -1,157 +1,156 @@
-name: CoreProtect
-main: net.coreprotect.CoreProtect
+name: CoreArchive
+main: net.corearchive.CoreArchive
 version: ${project.version}
 branch: ${project.branch}
 api-version: 1.16
 folia-supported: true
-website: http://coreprotect.net
-author: Intelli
+website: https://github.com/PlayPro/CoreProtect
+author: Intelli, _NickVo, Claude
 softdepend: [WorldEdit]
-description: >
-             Provides block protection for your server.
+description: Lookups and rollbacks against an archived CoreProtect database. Does not log new events.
 libraries:
   - org.duckdb:duckdb_jdbc:${duckdb.version}
 commands:
-  co:
+  ca:
     description: Utilize the plugin
-    permission: coreprotect.co
-    permission-message: §3CoreProtect §f- You do not have permission to do that.
+    permission: corearchive.ca
+    permission-message: §6CoreArchive §f- You do not have permission to do that.
     usage: /<command> <params>
-  core:
+  carchive:
     description: Utilize the plugin
-    permission: coreprotect.core
-    permission-message: §3CoreProtect §f- You do not have permission to do that.
+    permission: corearchive.carchive
+    permission-message: §6CoreArchive §f- You do not have permission to do that.
     usage: /<command> <params>
-  coreprotect:
+  corearchive:
     description: Utilize the plugin
-    permission: coreprotect.coreprotect
-    permission-message: §3CoreProtect §f- You do not have permission to do that.
+    permission: corearchive.corearchive
+    permission-message: §6CoreArchive §f- You do not have permission to do that.
     usage: /<command> <params>
 permissions:
-    coreprotect.*:
-        description: Gives access to all CoreProtect actions and commands
+    corearchive.*:
+        description: Gives access to all CoreArchive actions and commands
         default: op
         children: 
-            coreprotect.rollback: true
-            coreprotect.restore: true
-            coreprotect.inspect: true
-            coreprotect.help: true
-            coreprotect.purge: true
-            coreprotect.lookup: true
-            coreprotect.lookup.near: true
-            coreprotect.lookup.chat: true
-            coreprotect.lookup.command: true
-            coreprotect.lookup.session: true
-            coreprotect.lookup.username: true
-            coreprotect.lookup.block: true
-            coreprotect.lookup.sign: true
-            coreprotect.lookup.click: true
-            coreprotect.lookup.container: true
-            coreprotect.lookup.inventory: true
-            coreprotect.lookup.item: true
-            coreprotect.lookup.kill: true
-            coreprotect.lookup.spawn: true
-            coreprotect.teleport: true
-            coreprotect.reload: true
-            coreprotect.status: true
-            coreprotect.consumer: true
-            coreprotect.networking: true
-            coreprotect.give: false
-    coreprotect.co:
-        description: Has permission to access the CoreProtect /co command
+            corearchive.rollback: true
+            corearchive.restore: true
+            corearchive.inspect: true
+            corearchive.help: true
+            corearchive.purge: true
+            corearchive.lookup: true
+            corearchive.lookup.near: true
+            corearchive.lookup.chat: true
+            corearchive.lookup.command: true
+            corearchive.lookup.session: true
+            corearchive.lookup.username: true
+            corearchive.lookup.block: true
+            corearchive.lookup.sign: true
+            corearchive.lookup.click: true
+            corearchive.lookup.container: true
+            corearchive.lookup.inventory: true
+            corearchive.lookup.item: true
+            corearchive.lookup.kill: true
+            corearchive.lookup.spawn: true
+            corearchive.teleport: true
+            corearchive.reload: true
+            corearchive.status: true
+            corearchive.consumer: true
+            corearchive.networking: true
+            corearchive.give: false
+    corearchive.ca:
+        description: Has permission to access the CoreArchive /ca command
         default: true
-    coreprotect.core:
-        description: Has permission to access the CoreProtect /core command
+    corearchive.carchive:
+        description: Has permission to access the CoreArchive /carchive command
         default: false
-    coreprotect.coreprotect:
-        description: Has permission to access the CoreProtect /coreprotect command
+    corearchive.corearchive:
+        description: Has permission to access the CoreArchive /corearchive command
         default: false
-    coreprotect.lookup:
+    corearchive.lookup:
         description: Has permission to use the lookup command
         default: op
         children:
-            coreprotect.lookup.near: true
-            coreprotect.lookup.chat: true
-            coreprotect.lookup.command: true
-            coreprotect.lookup.session: true
-            coreprotect.lookup.username: true
-            coreprotect.lookup.block: true
-            coreprotect.lookup.sign: true
-            coreprotect.lookup.click: true
-            coreprotect.lookup.container: true
-            coreprotect.lookup.inventory: true
-            coreprotect.lookup.item: true
-            coreprotect.lookup.kill: true
-            coreprotect.lookup.spawn: true
-    coreprotect.lookup.near:
+            corearchive.lookup.near: true
+            corearchive.lookup.chat: true
+            corearchive.lookup.command: true
+            corearchive.lookup.session: true
+            corearchive.lookup.username: true
+            corearchive.lookup.block: true
+            corearchive.lookup.sign: true
+            corearchive.lookup.click: true
+            corearchive.lookup.container: true
+            corearchive.lookup.inventory: true
+            corearchive.lookup.item: true
+            corearchive.lookup.kill: true
+            corearchive.lookup.spawn: true
+    corearchive.lookup.near:
         description: Has permission to lookup nearby changes via the near command
         default: op
-    coreprotect.lookup.chat:
+    corearchive.lookup.chat:
         description: Has permission to lookup chat messages
         default: op
-    coreprotect.lookup.command:
+    corearchive.lookup.command:
         description: Has permission to lookup player commands
         default: op
-    coreprotect.lookup.session:
+    corearchive.lookup.session:
         description: Has permission to lookup player sessions
         default: op
-    coreprotect.lookup.username:
+    corearchive.lookup.username:
         description: Has permission to lookup player username changes
         default: op
-    coreprotect.lookup.block:
+    corearchive.lookup.block:
         description: Has permission to lookup block data
         default: op
-    coreprotect.lookup.sign:
+    corearchive.lookup.sign:
         description: Has permission to lookup sign messages
         default: op
-    coreprotect.lookup.click:
+    corearchive.lookup.click:
         description: Has permission to lookup player interactions
         default: op
-    coreprotect.lookup.container:
+    corearchive.lookup.container:
         description: Has permission to lookup container transactions
         default: op
-    coreprotect.lookup.inventory:
+    corearchive.lookup.inventory:
         description: Has permission to lookup inventory transactions
         default: op
-    coreprotect.lookup.item:
+    corearchive.lookup.item:
         description: Has permission to lookup item transactions
         default: op
-    coreprotect.lookup.kill:
+    corearchive.lookup.kill:
         description: Has permission to lookup entity kills
         default: op
-    coreprotect.lookup.spawn:
+    corearchive.lookup.spawn:
         description: Has permission to lookup entity spawns
         default: op
-    coreprotect.rollback:
+    corearchive.rollback:
         description: Has permission to perform rollbacks
         default: op
-    coreprotect.restore:
+    corearchive.restore:
         description: Has permission to perform restores
         default: op
-    coreprotect.inspect:
+    corearchive.inspect:
         description: Has permission to use the inspector
         default: op
-    coreprotect.help:
+    corearchive.help:
         description: Has permission to use the help command
         default: op
-    coreprotect.purge:
+    corearchive.purge:
         description: Has permission to use the purge command
         default: op
-    coreprotect.teleport:
+    corearchive.teleport:
         description: Has permission to use the teleport command
         default: op
-    coreprotect.reload:
+    corearchive.reload:
         description: Has permission to use the reload command
         default: op
-    coreprotect.status:
+    corearchive.status:
         description: Has permission to use the status command
         default: op
-    coreprotect.consumer:
+    corearchive.consumer:
         description: Has permission to use the consumer command
         default: op
-    coreprotect.networking:
+    corearchive.networking:
         description: Has permission to use the networking API
         default: op
-    coreprotect.give:
+    corearchive.give:
         description: Has permission to use the give command
         default: false

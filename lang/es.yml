@@ -1,4 +1,4 @@
-# CoreProtect Language File (es)
+# CoreArchive Language File (es)
 
 ACTION_NOT_SUPPORTED: "Está acción no es compatible con el comando."
 AMOUNT_BLOCK: "{0} {bloque|bloques}"
@@ -136,7 +136,7 @@ NO_RESULTS_PAGE: "Sin {resultados|datos} encontados para esta página."
 NO_ROLLBACK: "No hay rollbacks {pendientes|previos} encontrados."
 PATCH_INTERRUPTED: "Mejora interrumpida. Se intentará nuevamente en el reinicio."
 PATCH_OUTDATED_1: "No se puede mejorar base de datos más antiguas de {0}."
-PATCH_OUTDATED_2: "Actualice con una versión soportada de CoreProtect."
+PATCH_OUTDATED_2: "Actualice con una versión soportada de CoreArchive."
 PATCH_PROCESSING: "Procesando nueva información. Espere un momento..."
 PATCH_SKIP_UPDATE: "Saltando {tabla|índice} {actualización|creación|remoción} en {0}."
 PATCH_STARTED: "Intentando actualizar {0}. Espere..."
