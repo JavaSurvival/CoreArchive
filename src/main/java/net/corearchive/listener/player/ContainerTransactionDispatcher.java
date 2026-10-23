@@ -6,7 +6,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import org.bukkit.Location;
 import org.bukkit.plugin.IllegalPluginAccessException;
 
-import net.corearchive.CoreProtect;
+import net.corearchive.CoreArchive;
 import net.corearchive.config.ConfigHandler;
 import net.corearchive.thread.Scheduler;
 import net.corearchive.utility.ErrorReporter;
@@ -61,7 +61,7 @@ final class ContainerTransactionDispatcher {
         }
 
         private void start() {
-            CoreProtect plugin = CoreProtect.getInstance();
+            CoreArchive plugin = CoreArchive.getInstance();
             if (ConfigHandler.shutdownDrainRunning || !plugin.isEnabled()) {
                 drain();
                 return;

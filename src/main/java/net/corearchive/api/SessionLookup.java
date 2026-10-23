@@ -16,7 +16,7 @@ import net.corearchive.utility.WorldUtils;
 import net.corearchive.utility.ErrorReporter;
 
 /**
- * Provides API methods for looking up player session data in the CoreProtect database.
+ * Provides API methods for looking up player session data in the CoreArchive database.
  * Session data includes login/logout events and their associated timestamps and locations.
  */
 public class SessionLookup {

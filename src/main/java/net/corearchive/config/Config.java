@@ -20,7 +20,7 @@ import java.util.regex.Pattern;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 
-import net.corearchive.CoreProtect;
+import net.corearchive.CoreArchive;
 import net.corearchive.consumer.Consumer;
 import net.corearchive.language.Language;
 import net.corearchive.thread.Scheduler;
@@ -31,7 +31,7 @@ public class Config extends Language {
     private static final Map<String, String[]> HEADERS = new HashMap<>();
     private static final Map<String, String> DEFAULT_VALUES = new LinkedHashMap<>();
     private static final Map<String, Config> CONFIG_BY_WORLD_NAME = new ConcurrentHashMap<>();
-    private static final String DEFAULT_FILE_HEADER = "# CoreProtect Config";
+    private static final String DEFAULT_FILE_HEADER = "# CoreArchive Config";
     private static final Pattern NON_DIGIT_PATTERN = Pattern.compile("[^0-9]");
     public static final String LINE_SEPARATOR = "\n";
 
@@ -181,16 +181,16 @@ public class Config extends Language {
         DEFAULT_VALUES.put("username-changes", "true");
         DEFAULT_VALUES.put("worldedit", "true");
 
-        HEADERS.put("donation-key", new String[] { "# CoreProtect is donationware. Obtain a donation key from coreprotect.net/donate/" });
-        HEADERS.put("database-type", new String[] { "# Database engine used by CoreProtect. Valid values are duckdb, clickhouse, sqlite, and mysql.", "# Run /ca reload or restart the server after changing the database engine or connection target." });
+        HEADERS.put("donation-key", new String[] { "# CoreArchive is donationware. Obtain a donation key from coreprotect.net/donate/" });
+        HEADERS.put("database-type", new String[] { "# Database engine used by CoreArchive. Valid values are duckdb, clickhouse, sqlite, and mysql.", "# Run /ca reload or restart the server after changing the database engine or connection target." });
         HEADERS.put("mysql-host", new String[] { "# Connection settings for MySQL." });
-        HEADERS.put("clickhouse-host", new String[] { "# Connection settings for ClickHouse 26.1 or newer.", "# The configured database must already exist; CoreProtect creates its prefixed tables and views.", "# Multiple writers require database-lock disabled, the same version and prefix, separate data directories, and direct connections to one physical server.", "# Keep writer clocks synchronized; a shared prefix is one logical namespace for worlds and players.", "# Do not reassign usernames, and record UUID-bearing logins before UUID-less activity under a changed name.", "# Stop every writer before migration or purge; purge requires database-lock on the remaining server.", "# Replicated, distributed, and load-balanced independent ClickHouse nodes are unsupported." });
+        HEADERS.put("clickhouse-host", new String[] { "# Connection settings for ClickHouse 26.1 or newer.", "# The configured database must already exist; CoreArchive creates its prefixed tables and views.", "# Multiple writers require database-lock disabled, the same version and prefix, separate data directories, and direct connections to one physical server.", "# Keep writer clocks synchronized; a shared prefix is one logical namespace for worlds and players.", "# Do not reassign usernames, and record UUID-bearing logins before UUID-less activity under a changed name.", "# Stop every writer before migration or purge; purge requires database-lock on the remaining server.", "# Replicated, distributed, and load-balanced independent ClickHouse nodes are unsupported." });
         HEADERS.put("duckdb-memory-limit", new String[] { "# Resource limits for the embedded DuckDB database.", "# The memory limit controls DuckDB's buffer manager; the temporary limit caps spill data and is not preallocated." });
         HEADERS.put("language", new String[] { "# If modified, will automatically attempt to translate languages phrases.", "# List of language codes: https://coreprotect.net/languages/" });
         HEADERS.put("auto-purge", new String[] { "# Automatically purge data older than the configured time.", "# Examples: 30d, 12w, 6mo. Set to false to disable." });
-        HEADERS.put("check-updates", new String[] { "# If enabled, CoreProtect will check for updates when your server starts up.", "# If an update is available, you'll be notified via your server console.", });
+        HEADERS.put("check-updates", new String[] { "# If enabled, CoreArchive will check for updates when your server starts up.", "# If an update is available, you'll be notified via your server console.", });
         HEADERS.put("error-reporting", new String[] { "# Automatically sends errors to the plugin author." });
-        HEADERS.put("api-enabled", new String[] { "# If enabled, other plugins will be able to utilize the CoreProtect API.", });
+        HEADERS.put("api-enabled", new String[] { "# If enabled, other plugins will be able to utilize the CoreArchive API.", });
         HEADERS.put("verbose", new String[] { "# If enabled, extra data is displayed during rollbacks and restores.", "# Can be manually triggered by adding \"#verbose\" to your rollback command." });
         HEADERS.put("default-radius", new String[] { "# If no radius is specified in a rollback or restore, this value will be", "# used as the radius. Set to \"0\" to disable automatically adding a radius." });
         HEADERS.put("max-radius", new String[] { "# The maximum radius that can be used in a command. Set to \"0\" to disable.", "# To run a rollback or restore without a radius, you can use \"r:#global\"." });
@@ -412,7 +412,7 @@ public class Config extends Language {
     }
 
     private static Map<String, byte[]> loadFiles(String fileName) throws IOException {
-        final CoreProtect plugin = CoreProtect.getInstance();
+        final CoreArchive plugin = CoreArchive.getInstance();
         final File configFolder = plugin.getDataFolder();
         if (!configFolder.exists()) {
             configFolder.mkdirs();
@@ -458,7 +458,7 @@ public class Config extends Language {
             final CompletableFuture<Void> complete = new CompletableFuture<>();
             final CompletableFuture<Void> shutdown = Consumer.databaseReloadShutdownSignal();
 
-            Scheduler.runTask(CoreProtect.getInstance(), () -> {
+            Scheduler.runTask(CoreArchive.getInstance(), () -> {
                 if (shutdown.isDone()) {
                     return;
                 }

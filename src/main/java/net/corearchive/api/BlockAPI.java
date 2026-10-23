@@ -25,7 +25,7 @@ import net.corearchive.utility.WorldUtils;
 import net.corearchive.utility.ErrorReporter;
 
 /**
- * Provides API methods for block-related lookups in the CoreProtect database.
+ * Provides API methods for block-related lookups in the CoreArchive database.
  */
 public class BlockAPI {
 

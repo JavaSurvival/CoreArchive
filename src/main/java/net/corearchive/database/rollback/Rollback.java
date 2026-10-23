@@ -23,7 +23,7 @@ import org.bukkit.World;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import net.corearchive.CoreProtect;
+import net.corearchive.CoreArchive;
 import net.corearchive.config.Config;
 import net.corearchive.config.ConfigHandler;
 import net.corearchive.consumer.Consumer;
@@ -613,7 +613,7 @@ public class Rollback extends RollbackUtil {
         FoliaChunkWork firstWork = batchState.peek();
         Location chunkLocation = new Location(firstWork.world, (firstWork.chunkX << 4), 0, (firstWork.chunkZ << 4));
 
-        Scheduler.scheduleSyncDelayedTask(CoreProtect.getInstance(), () -> {
+        Scheduler.scheduleSyncDelayedTask(CoreArchive.getInstance(), () -> {
             try {
                 long batchStart = System.nanoTime();
                 do {
@@ -665,7 +665,7 @@ public class Rollback extends RollbackUtil {
     }
 
     private static void scheduleChunkBatchTask(RollbackBatchState batchState, HashMap<Integer, World> worldMap, HashMap<Integer, HashMap<Long, ArrayList<Object[]>>> dataList, HashMap<Integer, HashMap<Long, ArrayList<Object[]>>> itemDataList, int rollbackType, int preview, String userString, CommandSender user, boolean inventoryRollback, boolean verbose, List<Integer> actionList, RollbackBlockDataCache blockDataCache, EntitySpawnRollbackHandler.Context entitySpawnContext, CompletableFuture<Boolean> completion, int delay) {
-        Scheduler.scheduleSyncDelayedTask(CoreProtect.getInstance(), () -> {
+        Scheduler.scheduleSyncDelayedTask(CoreArchive.getInstance(), () -> {
             if (completion.isDone()) {
                 return;
             }

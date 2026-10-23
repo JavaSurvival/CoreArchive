@@ -23,7 +23,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.TreeMap;
 
-import net.corearchive.CoreProtect;
+import net.corearchive.CoreArchive;
 import net.corearchive.language.Language;
 import net.corearchive.language.Phrase;
 import net.corearchive.utility.ErrorReporter;
@@ -36,7 +36,7 @@ public class ConfigFile extends Config {
 
     private static final TreeMap<String, String> DEFAULT_VALUES = new TreeMap<>();
     private static final TreeMap<String, String> USER_VALUES = new TreeMap<>();
-    private static final String DEFAULT_FILE_HEADER = "# CoreProtect Language File (en)";
+    private static final String DEFAULT_FILE_HEADER = "# CoreArchive Language File (en)";
     private final HashMap<String, String> lang;
 
     public static void init(String fileName) throws IOException {
@@ -117,7 +117,7 @@ public class ConfigFile extends Config {
     }
 
     private static Map<String, byte[]> loadFiles(String fileName, boolean isCache) throws IOException {
-        final CoreProtect plugin = CoreProtect.getInstance();
+        final CoreArchive plugin = CoreArchive.getInstance();
         final File configFolder = plugin.getDataFolder();
         if (!configFolder.exists()) {
             configFolder.mkdirs();
@@ -228,7 +228,7 @@ public class ConfigFile extends Config {
     }
 
     public static void resetCache(String cacheName, String fileName) throws IOException {
-        File file = new File(CoreProtect.getInstance().getDataFolder(), cacheName);
+        File file = new File(CoreArchive.getInstance().getDataFolder(), cacheName);
         if (file.length() > 0) {
             new FileOutputStream(file).close();
             init(fileName);

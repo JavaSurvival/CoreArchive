@@ -1,11 +1,9 @@
 package net.corearchive.database.logger;
 
-import java.util.Locale;
-
+import net.corearchive.CoreArchive;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 
-import net.corearchive.CoreProtect;
 import net.corearchive.config.Config;
 import net.corearchive.config.ConfigHandler;
 import net.corearchive.database.Database;
@@ -32,7 +30,7 @@ public class CommandLogger {
 
             CoreProtectPreLogEvent event = new CoreProtectPreLogEvent(user, location, CoreProtectPreLogEvent.Action.PLAYER_COMMAND, -1, null, null, message);
             if (Config.getGlobal().API_ENABLED && !Bukkit.isPrimaryThread()) {
-                CoreProtect.getInstance().getServer().getPluginManager().callEvent(event);
+                CoreArchive.getInstance().getServer().getPluginManager().callEvent(event);
             }
 
             if (event.isCancelled()) {

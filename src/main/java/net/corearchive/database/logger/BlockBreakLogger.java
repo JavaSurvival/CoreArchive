@@ -1,13 +1,12 @@
 package net.corearchive.database.logger;
 
 import java.util.List;
-import java.util.Locale;
 
+import net.corearchive.CoreArchive;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 
-import net.corearchive.CoreProtect;
 import net.corearchive.bukkit.BukkitAdapter;
 import net.corearchive.config.Config;
 import net.corearchive.config.ConfigHandler;
@@ -71,7 +70,7 @@ public class BlockBreakLogger {
 
             CoreProtectPreLogEvent event = new CoreProtectPreLogEvent(user, location, CoreProtectPreLogEvent.Action.BLOCK_BREAK, LookupActions.BLOCK_BREAK, checkType, null, null);
             if (Config.getGlobal().API_ENABLED && !Bukkit.isPrimaryThread()) {
-                CoreProtect.getInstance().getServer().getPluginManager().callEvent(event);
+                CoreArchive.getInstance().getServer().getPluginManager().callEvent(event);
             }
 
             int userId = UserStatement.getId(preparedStmt, event.getUser(), true);

@@ -733,7 +733,7 @@ public final class ClickHouseConsumerWriteBatch implements ConsumerWriteBatch {
 
     private static int toIntId(long rowId, String family) throws SQLException {
         if (rowId > Integer.MAX_VALUE) {
-            throw new SQLException("ClickHouse " + family + " row IDs exceed CoreProtect's signed integer compatibility range");
+            throw new SQLException("ClickHouse " + family + " row IDs exceed CoreArchive's signed integer compatibility range");
         }
         return (int) rowId;
     }

@@ -538,7 +538,7 @@ public final class EntityDataCodec {
 
         private void requireHeader(Kind expectedKind) {
             if (readUnsignedByte() != MAGIC_FIRST || readUnsignedByte() != MAGIC_SECOND) {
-                throw new IllegalArgumentException("Entity data does not use the CoreProtect binary format");
+                throw new IllegalArgumentException("Entity data does not use the CoreArchive binary format");
             }
             int version = readUnsignedByte();
             if (version != VERSION) {

@@ -1,6 +1,6 @@
 package net.corearchive.thread;
 
-import net.corearchive.CoreProtect;
+import net.corearchive.CoreArchive;
 import net.corearchive.config.ConfigHandler;
 import net.corearchive.paper.PaperAdapter;
 
@@ -19,7 +19,7 @@ public final class TickTimeMonitor {
         throw new IllegalStateException("TickTimeMonitor class");
     }
 
-    public static void initialize(CoreProtect plugin) {
+    public static void initialize(CoreArchive plugin) {
         if (ConfigHandler.isFolia || PaperAdapter.ADAPTER.getAverageTickTime(plugin.getServer()) >= 0.0D) {
             return;
         }

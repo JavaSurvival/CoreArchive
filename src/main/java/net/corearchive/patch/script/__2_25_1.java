@@ -61,7 +61,7 @@ public class __2_25_1 {
         }
         String claim = existingClaim == null ? ownerPrefix + tableProperty(connection, database, sourceName, "uuid") : existingClaim;
         if (!claim.startsWith(ownerPrefix)) {
-            throw new SQLException("ClickHouse 25.1 migration is owned by another CoreProtect installation; resume the upgrade on that installation");
+            throw new SQLException("ClickHouse 25.1 migration is owned by another CoreArchive installation; resume the upgrade on that installation");
         }
         String originalUuid;
         try {
@@ -73,7 +73,7 @@ public class __2_25_1 {
         execute(connection, "CREATE TABLE IF NOT EXISTS " + lock + " (marker UInt8) ENGINE=TinyLog COMMENT '" + claim + "'");
         String actualClaim = tableProperty(connection, database, lockName, "comment");
         if (!claim.equals(actualClaim) || !actualClaim.startsWith(ownerPrefix)) {
-            throw new SQLException("ClickHouse 25.1 migration is owned by another CoreProtect installation; resume the upgrade on that installation");
+            throw new SQLException("ClickHouse 25.1 migration is owned by another CoreArchive installation; resume the upgrade on that installation");
         }
         version = schemaVersion(connection, metadata);
         if (version != 4 && version != ClickHouseSchema.VERSION) {
@@ -181,7 +181,7 @@ public class __2_25_1 {
                 + " AND (status=2 OR (status=1 AND database_lock_time>=toUnixTimestamp(now())-15)) LIMIT 1";
         try (Statement statement = connection.createStatement(); ResultSet result = statement.executeQuery(sql)) {
             if (result.next()) {
-                throw new SQLException("ClickHouse 25.1 migration requires other CoreProtect installations using this database and prefix to be stopped");
+                throw new SQLException("ClickHouse 25.1 migration requires other CoreArchive installations using this database and prefix to be stopped");
             }
         }
     }

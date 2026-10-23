@@ -196,7 +196,7 @@ public class Language {
         phrases.put(Phrase.NO_ROLLBACK, "No {pending|previous} rollback/restore found.");
         phrases.put(Phrase.PATCH_INTERRUPTED, "Upgrade interrupted. Will try again on restart.");
         phrases.put(Phrase.PATCH_OUTDATED_1, "Unable to upgrade databases older than {0}.");
-        phrases.put(Phrase.PATCH_OUTDATED_2, "Please upgrade with a supported version of CoreProtect.");
+        phrases.put(Phrase.PATCH_OUTDATED_2, "Please upgrade with a supported version of CoreArchive.");
         phrases.put(Phrase.PATCH_PROCESSING, "Processing new data. Please wait...");
         phrases.put(Phrase.PATCH_SKIP_UPDATE, "Skipping {table|index} {update|creation|removal} on {0}.");
         phrases.put(Phrase.PATCH_STARTED, "Performing {0} upgrade. Please wait...");

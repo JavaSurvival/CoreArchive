@@ -27,7 +27,7 @@ import org.bukkit.Bukkit;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
-import net.corearchive.CoreProtect;
+import net.corearchive.CoreArchive;
 import net.corearchive.config.Config;
 import net.corearchive.config.ConfigFile;
 import net.corearchive.config.ConfigHandler;
@@ -74,7 +74,7 @@ public class NetworkHandler extends Language implements Runnable {
                     HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                     connection.setRequestMethod("GET");
                     connection.setRequestProperty("Accept-Charset", "UTF-8");
-                    connection.setRequestProperty("User-Agent", "CoreProtect");
+                    connection.setRequestProperty("User-Agent", "CoreArchive");
                     connection.setDoOutput(true);
                     connection.setInstanceFollowRedirects(true);
                     connection.setConnectTimeout(5000);
@@ -156,7 +156,7 @@ public class NetworkHandler extends Language implements Runnable {
                                 Optional<String> languageHeader = stream.findFirst();
                                 if (languageHeader.isPresent()) {
                                     String headerString = languageHeader.get();
-                                    if (headerString.startsWith("# CoreProtect")) { // verify that valid cache file
+                                    if (headerString.startsWith("# CoreArchive")) { // verify that valid cache file
                                         String[] split = headerString.split(" ");
                                         if (split.length == 6 && split[2].length() > 2 && split[5].length() > 2) {
                                             String cacheVersion = split[2].substring(1);
@@ -202,7 +202,7 @@ public class NetworkHandler extends Language implements Runnable {
                                 connection.setRequestMethod("POST");
                                 connection.setRequestProperty("Accept-Charset", "UTF-8");
                                 connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded; charset=utf-8");
-                                connection.setRequestProperty("User-Agent", "CoreProtect");
+                                connection.setRequestProperty("User-Agent", "CoreArchive");
                                 connection.setRequestProperty("Content-Length", Integer.toString(postDataLength));
                                 connection.setDoOutput(true);
                                 connection.setInstanceFollowRedirects(true);
@@ -238,10 +238,10 @@ public class NetworkHandler extends Language implements Runnable {
                                             }
                                         }
 
-                                        File file = new File(CoreProtect.getInstance().getDataFolder(), ConfigFile.LANGUAGE_CACHE);
+                                        File file = new File(CoreArchive.getInstance().getDataFolder(), ConfigFile.LANGUAGE_CACHE);
                                         try (final FileOutputStream fout = new FileOutputStream(file, false)) {
                                             OutputStreamWriter out = new OutputStreamWriter(new BufferedOutputStream(fout), StandardCharsets.UTF_8);
-                                            out.append("# CoreProtect v" + pluginVersion + " Language Cache (" + languageCode + ")");
+                                            out.append("# CoreArchive v" + pluginVersion + " Language Cache (" + languageCode + ")");
                                             out.append(Config.LINE_SEPARATOR);
 
                                             for (final Entry<Phrase, String> entry : translatedPhrases.entrySet()) {
@@ -294,24 +294,24 @@ public class NetworkHandler extends Language implements Runnable {
                 String version = VersionUtils.getPluginVersion();
 
                 try {
-                    // CoreProtect Community Edition
+                    // CoreArchive Community Edition
                     URL url = new URL("http://update.coreprotect.net/version/");
                     connection = (HttpURLConnection) url.openConnection();
                     connection.setRequestMethod("GET");
                     connection.setRequestProperty("Accept-Charset", "UTF-8");
-                    connection.setRequestProperty("User-Agent", "CoreProtect/v" + version + " (by Intelli)");
+                    connection.setRequestProperty("User-Agent", "CoreArchive/v" + version + " (by Intelli)");
                     connection.setDoOutput(true);
                     connection.setInstanceFollowRedirects(true);
                     connection.setConnectTimeout(5000);
                     connection.connect();
                     status = connection.getResponseCode();
 
-                    // CoreProtect Edge
+                    // CoreArchive Edge
                     url = new URL("http://update.coreprotect.net/version-edge/");
                     connectionEdge = (HttpURLConnection) url.openConnection();
                     connectionEdge.setRequestMethod("GET");
                     connectionEdge.setRequestProperty("Accept-Charset", "UTF-8");
-                    connectionEdge.setRequestProperty("User-Agent", "CoreProtect/v" + version + " (by Intelli)");
+                    connectionEdge.setRequestProperty("User-Agent", "CoreArchive/v" + version + " (by Intelli)");
                     connectionEdge.setDoOutput(true);
                     connectionEdge.setInstanceFollowRedirects(true);
                     connectionEdge.setConnectTimeout(5000);
@@ -387,7 +387,7 @@ public class NetworkHandler extends Language implements Runnable {
                     connection = (HttpURLConnection) url.openConnection();
                     connection.setRequestMethod("GET");
                     connection.setRequestProperty("Accept-Charset", "UTF-8");
-                    connection.setRequestProperty("User-Agent", "CoreProtect");
+                    connection.setRequestProperty("User-Agent", "CoreArchive");
                     connection.setConnectTimeout(5000);
                     connection.connect();
                     connection.getResponseCode();

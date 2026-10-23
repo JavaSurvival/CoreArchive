@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
+import net.corearchive.CoreArchive;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -12,13 +13,11 @@ import org.bukkit.block.Block;
 import org.bukkit.block.data.BlockData;
 import org.bukkit.entity.Player;
 
-import net.corearchive.CoreProtect;
 import net.corearchive.config.ConfigHandler;
 import net.corearchive.language.Phrase;
 import net.corearchive.model.BlockGroup;
 import net.corearchive.paper.PaperAdapter;
 import net.corearchive.thread.Scheduler;
-import net.corearchive.utility.BlockUtils;
 
 public class Teleport {
 
@@ -76,7 +75,7 @@ public class Teleport {
                                 }
                                 checkY++;
 
-                                Scheduler.scheduleSyncDelayedTask(CoreProtect.getInstance(), () -> {
+                                Scheduler.scheduleSyncDelayedTask(CoreArchive.getInstance(), () -> {
                                     block1.setBlockData(revertBlockData);
                                     revertBlocks.remove(revertLocation);
                                 }, revertLocation, 1200);

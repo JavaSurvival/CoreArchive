@@ -6,7 +6,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.Plugin;
 
-import net.corearchive.CoreProtect;
+import net.corearchive.CoreArchive;
 import net.corearchive.config.ConfigHandler;
 import net.corearchive.language.Phrase;
 import net.corearchive.thread.NetworkHandler;
@@ -19,7 +19,7 @@ public class VersionUtils {
     }
 
     public static String getPluginVersion() {
-        String version = CoreProtect.getInstance().getDescription().getVersion();
+        String version = CoreArchive.getInstance().getDescription().getVersion();
         if (version.contains("-")) {
             version = version.split("-")[0];
         }
@@ -46,7 +46,7 @@ public class VersionUtils {
     }
 
     public static String getPluginName() {
-        CoreProtect instance = CoreProtect.getInstance();
+        CoreArchive instance = CoreArchive.getInstance();
         // Return default name if instance is null
         if (instance == null) {
             return "CoreArchive";
@@ -122,7 +122,7 @@ public class VersionUtils {
     public static String getBranch() {
         String branch = "";
         try {
-            CoreProtect instance = CoreProtect.getInstance();
+            CoreArchive instance = CoreArchive.getInstance();
             if (instance == null) {
                 return "";
             }

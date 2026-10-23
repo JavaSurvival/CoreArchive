@@ -632,7 +632,7 @@ public class Database extends Queue {
 
     public static long purgeClickHouse(long startTime, long endTime, int worldId, List<Integer> blockTypes, boolean optimize) throws SQLException {
         if (!Config.getGlobal().DATABASE_LOCK) {
-            throw new SQLException("ClickHouse purge requires database-lock to be enabled and every other CoreProtect installation sharing the database and prefix to be stopped");
+            throw new SQLException("ClickHouse purge requires database-lock to be enabled and every other CoreArchive installation sharing the database and prefix to be stopped");
         }
         return requireClickHouseDatabase().purge(startTime, endTime, worldId, blockTypes, optimize);
     }

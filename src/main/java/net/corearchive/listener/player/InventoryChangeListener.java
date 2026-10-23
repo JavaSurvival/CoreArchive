@@ -34,7 +34,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
 
-import net.corearchive.CoreProtect;
+import net.corearchive.CoreArchive;
 import net.corearchive.bukkit.BukkitAdapter;
 import net.corearchive.config.Config;
 import net.corearchive.config.ConfigHandler;
@@ -131,7 +131,7 @@ public final class InventoryChangeListener extends Queue implements Listener {
                 else {
                     InventoryHolder inventoryHolder = PaperAdapter.ADAPTER.getHolder(inventory, false);
                     if (inventoryHolder == null) {
-                        if (CoreProtect.getInstance().isAdvancedChestsEnabled()) {
+                        if (CoreArchive.getInstance().isAdvancedChestsEnabled()) {
                             AdvancedChest<?, ?> advancedChest = AdvancedChestsAPI.getInventoryManager().getAdvancedChest(inventory);
                             if (advancedChest != null) {
                                 playerLocation = advancedChest.getLocation();
@@ -287,10 +287,10 @@ public final class InventoryChangeListener extends Queue implements Listener {
             return;
         }
 
-        if (location == null && !CoreProtect.getInstance().isAdvancedChestsEnabled()) {
+        if (location == null && !CoreArchive.getInstance().isAdvancedChestsEnabled()) {
             return;
         }
-        if (CoreProtect.getInstance().isAdvancedChestsEnabled()) {
+        if (CoreArchive.getInstance().isAdvancedChestsEnabled()) {
             AdvancedChest<?, ?> chest = AdvancedChestsAPI.getInventoryManager().getAdvancedChest(inventory);
             if (chest != null) {
                 location = chest.getLocation();
@@ -415,12 +415,12 @@ public final class InventoryChangeListener extends Queue implements Listener {
         };
         Runnable retired = () -> discardEntityContainerSchedule(entity.getUniqueId(), scheduleToken);
         try {
-            if (!PaperAdapter.ADAPTER.executeEntityTask(CoreProtect.getInstance(), entity, flush, retired, 1L)) {
+            if (!PaperAdapter.ADAPTER.executeEntityTask(CoreArchive.getInstance(), entity, flush, retired, 1L)) {
                 if (ConfigHandler.isFolia) {
                     retired.run();
                 }
                 else {
-                    Scheduler.scheduleSyncDelayedTask(CoreProtect.getInstance(), flush, entity, 1);
+                    Scheduler.scheduleSyncDelayedTask(CoreArchive.getInstance(), flush, entity, 1);
                 }
             }
         }
@@ -966,7 +966,7 @@ public final class InventoryChangeListener extends Queue implements Listener {
     }
 
     private boolean isAdvancedChest(Inventory inventory) {
-        return CoreProtect.getInstance().isAdvancedChestsEnabled() && AdvancedChestsAPI.getInventoryManager().getAdvancedChest(inventory) != null;
+        return CoreArchive.getInstance().isAdvancedChestsEnabled() && AdvancedChestsAPI.getInventoryManager().getAdvancedChest(inventory) != null;
     }
 
 }

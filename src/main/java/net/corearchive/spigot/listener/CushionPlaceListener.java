@@ -18,7 +18,7 @@ import org.bukkit.event.entity.EntitySpawnEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.world.GenericGameEvent;
 
-import net.corearchive.CoreProtect;
+import net.corearchive.CoreArchive;
 import net.corearchive.config.Config;
 import net.corearchive.config.ConfigHandler;
 import net.corearchive.listener.entity.EntityPlaceListener;
@@ -49,7 +49,7 @@ public final class CushionPlaceListener implements Listener {
         Location location = entity.getLocation().getBlock().getLocation();
         List<EntitySpawnEvent> spawns = pendingSpawns.computeIfAbsent(location, key -> new ArrayList<>());
         spawns.add(event);
-        Scheduler.runTask(CoreProtect.getInstance(), () -> {
+        Scheduler.runTask(CoreArchive.getInstance(), () -> {
             spawns.remove(event);
             if (spawns.isEmpty()) {
                 pendingSpawns.remove(location, spawns);

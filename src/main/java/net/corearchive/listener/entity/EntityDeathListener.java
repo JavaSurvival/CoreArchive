@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
+import net.corearchive.CoreArchive;
 import org.bukkit.Bukkit;
 import org.bukkit.Color;
 import org.bukkit.Location;
@@ -73,7 +74,6 @@ import org.bukkit.projectiles.ProjectileSource;
 
 import com.google.common.collect.Lists;
 
-import net.corearchive.CoreProtect;
 import net.corearchive.bukkit.BukkitAdapter;
 import net.corearchive.config.Config;
 import net.corearchive.consumer.Queue;
@@ -111,7 +111,7 @@ public final class EntityDeathListener extends Queue implements Listener {
         // onEntityDeath logs the break if the hit was lethal. Otherwise, discard the capture on the next tick, or when Folia retires
         // the stand's scheduler (unload or any other removal). Neither callback touches the world.
         Runnable discard = () -> pendingArmorStandBreaks.remove(uuid, pendingBreak);
-        Scheduler.scheduleSyncDelayedTask(CoreProtect.getInstance(), discard, discard, armorStand, 0);
+        Scheduler.scheduleSyncDelayedTask(CoreArchive.getInstance(), discard, discard, armorStand, 0);
     }
 
     private static void logArmorStandBreak(ArmorStand armorStand) {
@@ -154,7 +154,7 @@ public final class EntityDeathListener extends Queue implements Listener {
         }
 
         for (LivingEntity entity : entityList) {
-            Scheduler.runTask(CoreProtect.getInstance(), () -> {
+            Scheduler.runTask(CoreArchive.getInstance(), () -> {
                 if (entity != null && entity.isDead()) {
                     logEntityDeath(entity, "#command");
                 }

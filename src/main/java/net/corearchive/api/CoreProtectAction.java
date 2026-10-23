@@ -3,7 +3,7 @@ package net.corearchive.api;
 import net.corearchive.model.action.LookupActions;
 
 /**
- * CoreProtect action identifiers used by lookup filters.
+ * CoreArchive action identifiers used by lookup filters.
  */
 public enum CoreProtectAction {
     BLOCK_BREAK(LookupActions.BLOCK_BREAK),

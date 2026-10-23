@@ -24,7 +24,7 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-import net.corearchive.CoreProtect;
+import net.corearchive.CoreArchive;
 import net.corearchive.bukkit.BukkitAdapter;
 import net.corearchive.config.Config;
 import net.corearchive.config.ConfigHandler;
@@ -191,7 +191,7 @@ public class Queue {
     }
 
     protected static void queueBlockBreakValidate(final String user, final Block block, final BlockState blockState, final Material type, final String blockData, final int extraData, int ticks) {
-        Scheduler.scheduleSyncDelayedTask(CoreProtect.getInstance(), () -> {
+        Scheduler.scheduleSyncDelayedTask(CoreArchive.getInstance(), () -> {
             try {
                 if (!Objects.equals(block.getType(), type)) {
                     queueBlockBreak(user, blockState, type, blockData, null, extraData, 0);
@@ -278,7 +278,7 @@ public class Queue {
     }
 
     protected static void queueBlockPlaceDelayed(final String user, final Location placed, final Material type, final String blockData, final BlockState replaced, int ticks) {
-        Scheduler.scheduleSyncDelayedTask(CoreProtect.getInstance(), () -> {
+        Scheduler.scheduleSyncDelayedTask(CoreArchive.getInstance(), () -> {
             try {
                 queueBlockPlace(user, placed.getBlock().getState(), type, replaced, null, -1, 0, blockData);
             }
@@ -293,7 +293,7 @@ public class Queue {
     }
 
     protected static void queueBlockPlaceValidate(final String user, final BlockState blockLocation, final Block block, final BlockState blockReplaced, final Material forceT, final int forceD, final int forceData, final String blockData, int ticks, boolean cacheLookup) {
-        Scheduler.scheduleSyncDelayedTask(CoreProtect.getInstance(), () -> {
+        Scheduler.scheduleSyncDelayedTask(CoreArchive.getInstance(), () -> {
             try {
                 Material blockType = block.getType();
                 BlockState replacedBlock = blockReplaced;

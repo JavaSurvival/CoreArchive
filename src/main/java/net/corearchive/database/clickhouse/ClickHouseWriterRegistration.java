@@ -38,10 +38,10 @@ final class ClickHouseWriterRegistration implements AutoCloseable {
                 writerLock = writerChannel.tryLock();
             }
             catch (OverlappingFileLockException exception) {
-                throw new SQLException("This CoreProtect installation already has an active ClickHouse writer", exception);
+                throw new SQLException("This CoreArchive installation already has an active ClickHouse writer", exception);
             }
             if (writerLock == null) {
-                throw new SQLException("This CoreProtect installation already has an active ClickHouse writer");
+                throw new SQLException("This CoreArchive installation already has an active ClickHouse writer");
             }
         }
         catch (IOException exception) {
@@ -81,7 +81,7 @@ final class ClickHouseWriterRegistration implements AutoCloseable {
     synchronized void verifyOwned() throws SQLException {
         ensureOpen();
         if (writerLock == null || !writerLock.isValid()) {
-            throw new OwnershipException("ClickHouse writer registration is not owned by this CoreProtect installation");
+            throw new OwnershipException("ClickHouse writer registration is not owned by this CoreArchive installation");
         }
     }
 

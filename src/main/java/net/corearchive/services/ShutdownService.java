@@ -43,7 +43,7 @@ public class ShutdownService {
      * Safely shuts down the plugin, ensuring all data is saved
      *
      * @param plugin
-     *            The CoreProtect plugin instance
+     *            The CoreArchive plugin instance
      */
     public static void safeShutdown(Plugin plugin) {
         try {

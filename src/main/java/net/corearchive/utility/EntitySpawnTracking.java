@@ -16,6 +16,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 import java.util.concurrent.atomic.AtomicLong;
 
+import net.corearchive.CoreArchive;
 import org.bukkit.Bukkit;
 import org.bukkit.Chunk;
 import org.bukkit.DyeColor;
@@ -37,7 +38,6 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.material.Colorable;
 import org.bukkit.persistence.PersistentDataType;
 
-import net.corearchive.CoreProtect;
 import net.corearchive.config.ConfigHandler;
 import net.corearchive.consumer.Queue;
 import net.corearchive.listener.player.InventoryChangeListener;
@@ -267,7 +267,7 @@ public final class EntitySpawnTracking {
             }
             return;
         }
-        CoreProtect plugin = CoreProtect.getInstance();
+        CoreArchive plugin = CoreArchive.getInstance();
         if (plugin == null || !plugin.isEnabled()) {
             return;
         }
@@ -396,7 +396,7 @@ public final class EntitySpawnTracking {
             return chunks;
         }
         CompletableFuture<Chunk[]> completion = new CompletableFuture<>();
-        Scheduler.runTask(CoreProtect.getInstance(), () -> {
+        Scheduler.runTask(CoreArchive.getInstance(), () -> {
             try {
                 completion.complete(world.getLoadedChunks());
             }
@@ -427,7 +427,7 @@ public final class EntitySpawnTracking {
             pending.add(completion);
             Location chunkLocation = new Location(world, chunkX << 4, 0, chunkZ << 4);
             try {
-                Scheduler.runTask(CoreProtect.getInstance(), () -> {
+                Scheduler.runTask(CoreArchive.getInstance(), () -> {
                     try {
                         collectLoadedEntities(world, chunkX, chunkZ, radius, inside);
                         completion.complete(null);
@@ -472,7 +472,7 @@ public final class EntitySpawnTracking {
     private static void scanBukkitChunkBatch(World world, Integer[] radius, Set<UUID> inside, int[] chunkXs, int[] chunkZs, int batchSize, long deadline) throws Exception {
         CompletableFuture<Void> completion = new CompletableFuture<>();
         try {
-            Scheduler.runTask(CoreProtect.getInstance(), () -> {
+            Scheduler.runTask(CoreArchive.getInstance(), () -> {
                 try {
                     for (int index = 0; index < batchSize; index++) {
                         collectLoadedEntities(world, chunkXs[index], chunkZs[index], radius, inside);
@@ -508,7 +508,7 @@ public final class EntitySpawnTracking {
     private static void scanFoliaCandidateBatch(World world, Integer[] radius, Set<UUID> inside, Set<UUID> loadedCandidates, UUID[] batch, int batchSize, long deadline) throws Exception {
         CompletableFuture<Void> completion = new CompletableFuture<>();
         try {
-            Scheduler.runTask(CoreProtect.getInstance(), () -> {
+            Scheduler.runTask(CoreArchive.getInstance(), () -> {
                 try {
                     List<CompletableFuture<Void>> entityTasks = new ArrayList<>(batchSize);
                     for (int index = 0; index < batchSize; index++) {
@@ -520,7 +520,7 @@ public final class EntitySpawnTracking {
 
                         CompletableFuture<Void> entityCompletion = new CompletableFuture<>();
                         entityTasks.add(entityCompletion);
-                        boolean scheduled = PaperAdapter.ADAPTER.executeEntityTask(CoreProtect.getInstance(), entity, () -> {
+                        boolean scheduled = PaperAdapter.ADAPTER.executeEntityTask(CoreArchive.getInstance(), entity, () -> {
                             try {
                                 loadedCandidates.add(uuid);
                                 if (isTracked(entity) && isWithinRadius(entity.getLocation(), world, radius)) {
@@ -567,7 +567,7 @@ public final class EntitySpawnTracking {
     private static void scanBukkitCandidateBatch(World world, Integer[] radius, Set<UUID> inside, Set<UUID> loadedCandidates, UUID[] batch, int batchSize, long deadline) throws Exception {
         CompletableFuture<Void> completion = new CompletableFuture<>();
         try {
-            Scheduler.runTask(CoreProtect.getInstance(), () -> {
+            Scheduler.runTask(CoreArchive.getInstance(), () -> {
                 try {
                     for (int index = 0; index < batchSize; index++) {
                         UUID uuid = batch[index];
@@ -625,7 +625,7 @@ public final class EntitySpawnTracking {
 
         CompletableFuture<Void> completion = new CompletableFuture<>();
         if (ConfigHandler.isFolia) {
-            Scheduler.runTask(CoreProtect.getInstance(), () -> {
+            Scheduler.runTask(CoreArchive.getInstance(), () -> {
                 try {
                     List<CompletableFuture<Void>> pending = new ArrayList<>();
                     for (UUID uuid : uuids) {
@@ -636,7 +636,7 @@ public final class EntitySpawnTracking {
 
                         CompletableFuture<Void> entityCompletion = new CompletableFuture<>();
                         pending.add(entityCompletion);
-                        boolean scheduled = PaperAdapter.ADAPTER.executeEntityTask(CoreProtect.getInstance(), entity, () -> {
+                        boolean scheduled = PaperAdapter.ADAPTER.executeEntityTask(CoreArchive.getInstance(), entity, () -> {
                             try {
                                 if (isTracked(entity)) {
                                     locations.put(uuid, entity.getLocation());
@@ -666,7 +666,7 @@ public final class EntitySpawnTracking {
             });
         }
         else {
-            Scheduler.runTask(CoreProtect.getInstance(), () -> {
+            Scheduler.runTask(CoreArchive.getInstance(), () -> {
                 try {
                     for (UUID uuid : uuids) {
                         Entity entity = Bukkit.getEntity(uuid);
@@ -725,14 +725,14 @@ public final class EntitySpawnTracking {
 
     private static void schedulePendingClear(UUID uuid, PendingClear request) {
         Location location = getCachedLocation(uuid);
-        CoreProtect plugin = CoreProtect.getInstance();
+        CoreArchive plugin = CoreArchive.getInstance();
         if (plugin == null || !plugin.isEnabled()) {
             applyPendingClear(uuid, request, () -> forget(uuid), false);
             return;
         }
 
         try {
-            Scheduler.runTask(CoreProtect.getInstance(), () -> {
+            Scheduler.runTask(CoreArchive.getInstance(), () -> {
                 try {
                     Entity entity = Bukkit.getEntity(uuid);
                     if (entity == null) {
@@ -749,7 +749,7 @@ public final class EntitySpawnTracking {
                     };
                     if (ConfigHandler.isFolia && !PaperAdapter.ADAPTER.isOwnedByCurrentRegion(entity)) {
                         Runnable retired = () -> applyPendingClear(uuid, request, () -> forget(uuid), false);
-                        if (!PaperAdapter.ADAPTER.executeEntityTask(CoreProtect.getInstance(), entity, clear, retired)) {
+                        if (!PaperAdapter.ADAPTER.executeEntityTask(CoreArchive.getInstance(), entity, clear, retired)) {
                             retired.run();
                         }
                     }
@@ -793,7 +793,7 @@ public final class EntitySpawnTracking {
                         forget(uuid);
                         entityCompletion.complete(null);
                     };
-                    boolean scheduled = PaperAdapter.ADAPTER.executeEntityTask(CoreProtect.getInstance(), entity, () -> {
+                    boolean scheduled = PaperAdapter.ADAPTER.executeEntityTask(CoreArchive.getInstance(), entity, () -> {
                         try {
                             checkpointLoadedEntity(uuid, entity);
                         }
@@ -1188,7 +1188,7 @@ public final class EntitySpawnTracking {
             synchronized (EntitySpawnTracking.class) {
                 key = trackingKey;
                 if (key == null) {
-                    key = new NamespacedKey(CoreProtect.getInstance(), TRACKING_KEY);
+                    key = new NamespacedKey(CoreArchive.getInstance(), TRACKING_KEY);
                     trackingKey = key;
                 }
             }
@@ -1202,7 +1202,7 @@ public final class EntitySpawnTracking {
             synchronized (EntitySpawnTracking.class) {
                 key = originSeedKey;
                 if (key == null) {
-                    key = new NamespacedKey(CoreProtect.getInstance(), ORIGIN_SEED_KEY);
+                    key = new NamespacedKey(CoreArchive.getInstance(), ORIGIN_SEED_KEY);
                     originSeedKey = key;
                 }
             }
@@ -1216,7 +1216,7 @@ public final class EntitySpawnTracking {
             synchronized (EntitySpawnTracking.class) {
                 key = pendingIdentityKey;
                 if (key == null) {
-                    key = new NamespacedKey(CoreProtect.getInstance(), PENDING_IDENTITY_KEY);
+                    key = new NamespacedKey(CoreArchive.getInstance(), PENDING_IDENTITY_KEY);
                     pendingIdentityKey = key;
                 }
             }
@@ -1225,7 +1225,7 @@ public final class EntitySpawnTracking {
     }
 
     private static void clearPendingIdentityMarker(UUID uuid, Location location, PendingIdentityPromotion promotion) {
-        CoreProtect plugin = CoreProtect.getInstance();
+        CoreArchive plugin = CoreArchive.getInstance();
         if (plugin == null || !plugin.isEnabled()) {
             removePendingIdentityPromotion(uuid, promotion);
             return;
@@ -1240,7 +1240,7 @@ public final class EntitySpawnTracking {
         }
     }
 
-    private static void clearPendingIdentityMarker(CoreProtect plugin, UUID uuid, PendingIdentityPromotion promotion) {
+    private static void clearPendingIdentityMarker(CoreArchive plugin, UUID uuid, PendingIdentityPromotion promotion) {
         Runnable retired = () -> removePendingIdentityPromotion(uuid, promotion);
         try {
             Entity entity = Bukkit.getEntity(uuid);
@@ -1535,7 +1535,7 @@ public final class EntitySpawnTracking {
             return;
         }
 
-        CoreProtect plugin = CoreProtect.getInstance();
+        CoreArchive plugin = CoreArchive.getInstance();
         if (plugin == null || !plugin.isEnabled()) {
             nextCleanup.compareAndSet(now + CLEANUP_INTERVAL_MILLIS, 0L);
             return;

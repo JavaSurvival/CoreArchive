@@ -1,7 +1,7 @@
 package net.corearchive.api.result;
 
 /**
- * Common fields shared by typed CoreProtect lookup results.
+ * Common fields shared by typed CoreArchive lookup results.
  */
 public interface CoreProtectResult {
     int getActionId();

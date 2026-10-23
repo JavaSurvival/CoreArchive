@@ -1,4 +1,4 @@
-# CoreProtect Language File (de)
+# CoreArchive Language File (de)
 
 ACTION_NOT_SUPPORTED: "Diese Aktion wird nicht unterstützt."
 AMOUNT_BLOCK: "{0} {Block|Blöcke}"
@@ -136,7 +136,7 @@ NO_RESULTS_PAGE: "Keine {Ergebnisse|Daten} für diese Seite gefunden."
 NO_ROLLBACK: "Kein(en) {ausstehende(s|n)|vorherige(s|n)} Rollback/Restore gefunden."
 PATCH_INTERRUPTED: "Upgrade unterbrochen. Wird bei einem Neustart erneut versucht."
 PATCH_OUTDATED_1: "Datenbanken, die älter als {0} sind, können nicht aktualisiert werden."
-PATCH_OUTDATED_2: "Bitte updaten Sie mit einer unterstützten Version von CoreProtect."
+PATCH_OUTDATED_2: "Bitte updaten Sie mit einer unterstützten Version von CoreArchive."
 PATCH_PROCESSING: "Neue Daten werden verarbeitet. Bitte warten..."
 PATCH_SKIP_UPDATE: "Überspringe {Tabellen|Index}{aktualisierung|erstellung|entfernung} bei {0}."
 PATCH_STARTED: "Führe {0} Upgrade durch. Bitte warten..."

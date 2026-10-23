@@ -10,6 +10,7 @@ import java.util.Map.Entry;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 
+import net.corearchive.CoreArchive;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -28,7 +29,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
-import net.corearchive.CoreProtect;
 import net.corearchive.bukkit.BukkitAdapter;
 import net.corearchive.config.Config;
 import net.corearchive.config.ConfigHandler;
@@ -401,7 +401,7 @@ public class RollbackProcessor {
                     int chunkZ = playerLocation.getBlockZ() >> 4;
 
                     if (bukkitRollbackWorld.getName().equals(playerWorld) && chunkX == finalChunkX && chunkZ == finalChunkZ) {
-                        Scheduler.runTask(CoreProtect.getInstance(), () -> Teleport.performSafeTeleport(player, playerLocation, false), player);
+                        Scheduler.runTask(CoreArchive.getInstance(), () -> Teleport.performSafeTeleport(player, playerLocation, false), player);
                     }
                 }
             }
@@ -474,7 +474,7 @@ public class RollbackProcessor {
 
         // A player who logged out is skipped, like an offline player on the inline path
         Runnable retired = () -> completion.complete(true);
-        if (!PaperAdapter.ADAPTER.executeEntityTask(CoreProtect.getInstance(), player, task, retired)) {
+        if (!PaperAdapter.ADAPTER.executeEntityTask(CoreArchive.getInstance(), player, task, retired)) {
             retired.run();
         }
         context.addPending(completion);

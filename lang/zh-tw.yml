@@ -1,4 +1,4 @@
-# CoreProtect Language File (zh-TW)
+# CoreArchive Language File (zh-TW)
 # Translators: whitebear13579, flandretw, ianiiaannn, hanshans135
 
 ACTION_NOT_SUPPORTED: "此指令不支援該行為。"
@@ -137,7 +137,7 @@ NO_RESULTS_PAGE: "未找到該頁面相關的{結果|資料}。"
 NO_ROLLBACK: "未找到{待處理|上一個}回滾/恢復。"
 PATCH_INTERRUPTED: "更新已中斷！將會在下次啟動時再次嘗試。"
 PATCH_OUTDATED_1: "無法更新早於 {0} 的資料庫。"
-PATCH_OUTDATED_2: "請使用受到支援的 CoreProtect 版本。"
+PATCH_OUTDATED_2: "請使用受到支援的 CoreArchive 版本。"
 PATCH_PROCESSING: "正在處理新資訊，請稍候……"
 PATCH_SKIP_UPDATE: "已在 {0} 上跳過{資料表|索引}的{更新|建立|清除}。"
 PATCH_STARTED: "正在執行 {0} 更新，請稍候……"

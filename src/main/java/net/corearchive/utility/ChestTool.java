@@ -7,7 +7,7 @@ import org.bukkit.block.data.Directional;
 import org.bukkit.block.data.type.Chest;
 import org.bukkit.block.data.type.Chest.Type;
 
-import net.corearchive.CoreProtect;
+import net.corearchive.CoreArchive;
 import net.corearchive.thread.Scheduler;
 
 public class ChestTool {
@@ -75,7 +75,7 @@ public class ChestTool {
     }
 
     private static void validateContainer(BlockData blockData, Type newType, Block block, Block relativeBlock) {
-        Scheduler.scheduleSyncDelayedTask(CoreProtect.getInstance(), () -> {
+        Scheduler.scheduleSyncDelayedTask(CoreArchive.getInstance(), () -> {
             try {
                 BlockData relativeBlockData = relativeBlock.getBlockData();
                 if (!blockData.getAsString().equals(block.getBlockData().getAsString()) || !(relativeBlockData instanceof Chest) || ((Chest) relativeBlockData).getType() == newType) {

@@ -11,7 +11,7 @@ import org.bukkit.Material;
 import org.bukkit.command.CommandSender;
 
 /**
- * Main parser class for CoreProtect commands.
+ * Main parser class for CoreArchive commands.
  * Delegates to specialized parser classes for specific functionality.
  */
 public class CommandParser {

@@ -1,5 +1,5 @@
 name: CoreArchive
-main: net.corearchive.CoreProtect
+main: net.corearchive.CoreArchive
 version: ${project.version}
 branch: ${project.branch}
 api-version: 1.16

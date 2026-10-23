@@ -21,7 +21,7 @@ import org.bukkit.event.player.PlayerArmorStandManipulateEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerShearEntityEvent;
 
-import net.corearchive.CoreProtect;
+import net.corearchive.CoreArchive;
 import net.corearchive.config.Config;
 import net.corearchive.config.ConfigHandler;
 import net.corearchive.consumer.Queue;
@@ -116,7 +116,7 @@ public final class EntityInteractionListener extends Queue implements Listener {
         if (scheduleFlush) {
             PendingInteraction scheduledInteraction = interaction;
             try {
-                Scheduler.scheduleSyncDelayedTask(CoreProtect.getInstance(),
+                Scheduler.scheduleSyncDelayedTask(CoreArchive.getInstance(),
                         () -> flush(key, scheduledInteraction),
                         () -> discard(key, scheduledInteraction), entity, 1);
             }

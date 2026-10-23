@@ -18,7 +18,7 @@ import org.bukkit.event.block.BlockDispenseEvent;
 import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
 
-import net.corearchive.CoreProtect;
+import net.corearchive.CoreArchive;
 import net.corearchive.bukkit.BukkitAdapter;
 import net.corearchive.config.Config;
 import net.corearchive.consumer.Queue;
@@ -143,7 +143,7 @@ public final class BlockDispenseListener extends Queue implements Listener {
         String blockData = originalBlockData.getAsString();
         boolean waterlogged = originalBlockData instanceof Waterlogged && ((Waterlogged) originalBlockData).isWaterlogged();
 
-        Scheduler.scheduleSyncDelayedTask(CoreProtect.getInstance(), () -> {
+        Scheduler.scheduleSyncDelayedTask(CoreArchive.getInstance(), () -> {
             try {
                 Material currentType = block.getType();
                 Material removedType = originalType;

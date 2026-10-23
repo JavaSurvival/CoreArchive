@@ -7,7 +7,7 @@ import com.sk89q.worldedit.WorldEdit;
 import com.sk89q.worldedit.event.extent.EditSessionEvent;
 import com.sk89q.worldedit.util.eventbus.Subscribe;
 
-import net.corearchive.CoreProtect;
+import net.corearchive.CoreArchive;
 import net.corearchive.config.ConfigHandler;
 import net.corearchive.language.Phrase;
 import net.corearchive.language.Selector;
@@ -55,7 +55,7 @@ public class CoreProtectEditSessionEvent {
             // Failed to initialize WorldEdit logging
         }
 
-        Scheduler.runTask(CoreProtect.getInstance(), () -> {
+        Scheduler.runTask(CoreArchive.getInstance(), () -> {
             try {
                 if (isInitialized()) {
                     Chat.console(Phrase.build(Phrase.INTEGRATION_SUCCESS, isFAWE() ? "FastAsyncWorldEdit" : "WorldEdit", Selector.FIRST));

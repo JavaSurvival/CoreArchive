@@ -601,7 +601,7 @@ final class ClickHouseEntitySpawnUpdates implements ConsumerEntitySpawnUpdates {
 
     private static int toTrackingRowId(long rowId) {
         if (rowId > Integer.MAX_VALUE) {
-            throw new IllegalStateException("ClickHouse entity spawn row ID exceeds CoreProtect's signed integer compatibility range");
+            throw new IllegalStateException("ClickHouse entity spawn row ID exceeds CoreArchive's signed integer compatibility range");
         }
         return (int) rowId;
     }

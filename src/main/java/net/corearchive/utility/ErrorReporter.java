@@ -263,7 +263,7 @@ public final class ErrorReporter {
                     startWorker();
                 }
             }
-        }, "CoreProtect Error Reporter");
+        }, "CoreArchive Error Reporter");
         worker.setDaemon(true);
         worker.start();
     }
@@ -288,7 +288,7 @@ public final class ErrorReporter {
             connection.setRequestMethod("POST");
             connection.setRequestProperty("Accept-Charset", "UTF-8");
             connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded; charset=utf-8");
-            connection.setRequestProperty("User-Agent", "CoreProtect/v" + safePluginVersion() + " (by Intelli)");
+            connection.setRequestProperty("User-Agent", "CoreArchive/v" + safePluginVersion() + " (by Intelli)");
             connection.setRequestProperty("Content-Length", Integer.toString(bytes.length));
             connection.setDoOutput(true);
             connection.setInstanceFollowRedirects(true);

@@ -1,10 +1,10 @@
 package net.corearchive.database.logger;
 
 
+import net.corearchive.CoreArchive;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 
-import net.corearchive.CoreProtect;
 import net.corearchive.config.Config;
 import net.corearchive.config.ConfigHandler;
 import net.corearchive.database.ConsumerWriteBatch;
@@ -29,7 +29,7 @@ public final class EntityInteractionLogger {
         Location currentLocation = interaction.getCurrentLocation();
         CoreProtectPreLogEvent event = new CoreProtectPreLogEvent(user, currentLocation.clone(), CoreProtectPreLogEvent.Action.ENTITY_INTERACTION, LookupActions.INTERACTION, null, interaction.getEntityType(), interaction.getAction().name());
         if (Config.getGlobal().API_ENABLED && !Bukkit.isPrimaryThread()) {
-            CoreProtect.getInstance().getServer().getPluginManager().callEvent(event);
+            CoreArchive.getInstance().getServer().getPluginManager().callEvent(event);
         }
         return event.isCancelled() ? null : new LogContext(event);
     }

@@ -12,11 +12,11 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.LockSupport;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
+import net.corearchive.CoreArchive;
 import org.bukkit.Bukkit;
 import org.bukkit.block.BlockState;
 import org.bukkit.inventory.ItemStack;
 
-import net.corearchive.CoreProtect;
 import net.corearchive.config.ConfigHandler;
 import net.corearchive.consumer.process.Process;
 import net.corearchive.database.Database;
@@ -633,7 +633,7 @@ public class Consumer extends Process implements Runnable, Thread.UncaughtExcept
     @Override
     public void uncaughtException(Thread thread, Throwable e) {
         ErrorReporter.report(e);
-        Bukkit.getPluginManager().disablePlugin(CoreProtect.getInstance());
+        Bukkit.getPluginManager().disablePlugin(CoreArchive.getInstance());
     }
 
     public static void startConsumer() {

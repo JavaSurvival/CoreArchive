@@ -1,4 +1,4 @@
-# CoreProtect Language File (tr)
+# CoreArchive Language File (tr)
 
 ACTION_NOT_SUPPORTED: "Bu işlem desteklenmiyor."
 AMOUNT_BLOCK: "{0} {blok|bloklar}"
@@ -133,7 +133,7 @@ NO_RESULTS_PAGE: "Numara {sonuçlar|veri} o sayfa için bulundu."
 NO_ROLLBACK: "Numara {beklemede|önceki} geri alma/geri yükleme bulundu."
 PATCH_INTERRUPTED: "Yükseltme kesintiye uğradı. Yeniden başlatıldığında tekrar deneyecek."
 PATCH_OUTDATED_1: "Daha eski veritabanları yükseltilemiyor {0}."
-PATCH_OUTDATED_2: "Lütfen desteklenen bir sürümle yükseltin CoreProtect."
+PATCH_OUTDATED_2: "Lütfen desteklenen bir sürümle yükseltin CoreArchive."
 PATCH_PROCESSING: "Yeni veriler işleniyor. Lütfen bekle..."
 PATCH_SKIP_UPDATE: "Atlama {tablo|dizin} {güncelleme|oluşturma|kaldırma} üzerinde {0}."
 PATCH_STARTED: "performans {0} Yükselt. Lütfen bekle..."

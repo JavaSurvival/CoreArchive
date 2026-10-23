@@ -11,7 +11,7 @@ import org.bukkit.block.BlockState;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 
-import net.corearchive.CoreProtect;
+import net.corearchive.CoreArchive;
 import net.corearchive.config.ConfigHandler;
 import net.corearchive.consumer.Queue;
 import net.corearchive.listener.player.EntityInteractionListener;
@@ -140,7 +140,7 @@ public class RollbackEntityHandler {
             return false;
         }
         if (ConfigHandler.isFolia && !PaperAdapter.ADAPTER.isOwnedByCurrentRegion(entity)) {
-            return PaperAdapter.ADAPTER.executeEntityTask(CoreProtect.getInstance(), entity, () -> removeEntity(entity), null);
+            return PaperAdapter.ADAPTER.executeEntityTask(CoreArchive.getInstance(), entity, () -> removeEntity(entity), null);
         }
 
         removeEntity(entity);

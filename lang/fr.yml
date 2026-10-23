@@ -1,4 +1,4 @@
-# CoreProtect Language File (fr)
+# CoreArchive Language File (fr)
 
 ACTION_NOT_SUPPORTED: "Cette action n'est pas prise en charge."
 AMOUNT_BLOCK: "{0} {bloquer|blocs}"
@@ -133,7 +133,7 @@ NO_RESULTS_PAGE: "Non {résultats|données} trouvé pour cette page."
 NO_ROLLBACK: "Non {en attente|précédent} annulation/restauration trouvée."
 PATCH_INTERRUPTED: "Mise à niveau interrompue. Je réessayerai au redémarrage."
 PATCH_OUTDATED_1: "Impossible de mettre à niveau les bases de données antérieures à {0}."
-PATCH_OUTDATED_2: "Veuillez mettre à niveau avec une version prise en charge de CoreProtect."
+PATCH_OUTDATED_2: "Veuillez mettre à niveau avec une version prise en charge de CoreArchive."
 PATCH_PROCESSING: "Traitement de nouvelles données. S'il vous plaît, attendez..."
 PATCH_SKIP_UPDATE: "Saut {table|index} {mise à jour|création|suppression} au {0}."
 PATCH_STARTED: "Performant {0} améliorer. S'il vous plaît, attendez..."

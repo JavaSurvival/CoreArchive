@@ -1,4 +1,4 @@
-# CoreProtect Language File (uk)
+# CoreArchive Language File (uk)
 
 ACTION_NOT_SUPPORTED: "Ця дія не підтримується."
 AMOUNT_BLOCK: "{0} {блок|блоки}"
@@ -133,7 +133,7 @@ NO_RESULTS_PAGE: "Ні {результати|дані} знайдено для �
 NO_ROLLBACK: "Ні {в очікуванні|попередній} відкат/відновлення знайдено."
 PATCH_INTERRUPTED: "Оновлення перервано. Спробую ще раз при перезавантаженні."
 PATCH_OUTDATED_1: "Не вдається оновити бази даних старші {0}."
-PATCH_OUTDATED_2: "Оновіть підтримувану версію CoreProtect."
+PATCH_OUTDATED_2: "Оновіть підтримувану версію CoreArchive."
 PATCH_PROCESSING: "Обробка нових даних. Будь ласка, зачекайте..."
 PATCH_SKIP_UPDATE: "Пропуск {таблиця|індекс} {оновлення|створення|видалення} на {0}."
 PATCH_STARTED: "Виконання {0} оновлення. Будь ласка, зачекайте..."

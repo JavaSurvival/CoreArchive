@@ -429,7 +429,7 @@ public class ConfigHandler extends Queue {
         ConfigHandler.duckdbMaxTempDirectorySize = global.DUCKDB_MAX_TEMP_DIRECTORY_SIZE;
         ConfigHandler.prefix = global.PREFIX;
 
-        // Optional custom SQLite database filename (hidden option) inside the CoreProtect data folder.
+        // Optional custom SQLite database filename (hidden option) inside the CoreArchive data folder.
         String sqliteDatabase = global.SQLITE_DATABASE.trim();
         ConfigHandler.sqlite = sqliteDatabase.isEmpty() ? DEFAULT_SQLITE_DATABASE : sqliteDatabase;
 
@@ -461,7 +461,7 @@ public class ConfigHandler extends Queue {
                 initializeDatabase();
             }
             if (!migrationActivation && Database.hasIncompleteMigrationMarker()) {
-                throw new IllegalStateException("Database contains an incomplete CoreProtect migration and cannot be activated");
+                throw new IllegalStateException("Database contains an incomplete CoreArchive migration and cannot be activated");
             }
             ConfigHandler.databaseReachable = true;
         }

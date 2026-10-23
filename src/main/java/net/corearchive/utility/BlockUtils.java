@@ -20,7 +20,7 @@ import org.bukkit.inventory.BlockInventoryHolder;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
-import net.corearchive.CoreProtect;
+import net.corearchive.CoreArchive;
 import net.corearchive.bukkit.BukkitAdapter;
 import net.corearchive.config.ConfigHandler;
 import net.corearchive.model.PendingBlockChange;
@@ -285,7 +285,7 @@ public class BlockUtils {
     }
 
     public static void updateBlock(final BlockState block) {
-        Scheduler.runTask(CoreProtect.getInstance(), () -> {
+        Scheduler.runTask(CoreArchive.getInstance(), () -> {
             try {
                 if (block.getBlockData() instanceof Waterlogged) {
                     Block currentBlock = block.getBlock();

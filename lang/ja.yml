@@ -1,4 +1,4 @@
-# CoreProtect Language File (ja)
+# CoreArchive Language File (ja)
 
 ACTION_NOT_SUPPORTED: "そのアクションはサポートされていません"
 AMOUNT_BLOCK: "{0}{ブロック|ブロック}"
@@ -137,7 +137,7 @@ NO_RESULTS_PAGE: "このページには{結果|データ}は見つかりませ�
 NO_ROLLBACK: "{保留中または以前の}ロールバック/復元は見つかりませんでした"
 PATCH_INTERRUPTED: "アップグレードが中断されました。再起動時に再試行します"
 PATCH_OUTDATED_1: "{0}より古いデータベースはアップグレードできません"
-PATCH_OUTDATED_2: "CoreProtect がサポートされているバージョンにアップグレードしてください"
+PATCH_OUTDATED_2: "CoreArchive がサポートされているバージョンにアップグレードしてください"
 PATCH_PROCESSING: "新しいデータを処理しています。しばらくお待ちください..."
 PATCH_SKIP_UPDATE: "{0}の{テーブル|インデックス}の{更新|作成|削除}をスキップします"
 PATCH_STARTED: "{0} のアップグレードを実行します。しばらくお待ちください..."

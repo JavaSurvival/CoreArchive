@@ -2,11 +2,11 @@ package net.corearchive.command;
 
 import java.util.concurrent.ConcurrentHashMap;
 
+import net.corearchive.CoreArchive;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginDescriptionFile;
 
-import net.corearchive.CoreProtect;
 import net.corearchive.config.Config;
 import net.corearchive.config.ConfigHandler;
 import net.corearchive.consumer.Consumer;
@@ -34,7 +34,7 @@ public class StatusCommand {
             @Override
             public void run() {
                 try {
-                    CoreProtect instance = CoreProtect.getInstance();
+                    CoreArchive instance = CoreArchive.getInstance();
                     PluginDescriptionFile pdfFile = instance.getDescription();
 
                     String versionCheck = "";
@@ -171,7 +171,7 @@ public class StatusCommand {
                             Thread.sleep(500);
                             /*
                             Functions.sendMessage(player, Color.WHITE + "----- " + Color.DARK_AQUA + "Recommended Plugin " + Color.WHITE + "-----");
-                            Functions.sendMessage(player, Color.DARK_AQUA + "Notice: " + Color.WHITE + "Enjoy CoreProtect? Check out CoreEdit!");
+                            Functions.sendMessage(player, Color.DARK_AQUA + "Notice: " + Color.WHITE + "Enjoy CoreArchive? Check out CoreEdit!");
                             Functions.sendMessage(player, Color.DARK_AQUA + "Download: " + Color.WHITE + "www.coreedit.net/download/");
                             */
                         }

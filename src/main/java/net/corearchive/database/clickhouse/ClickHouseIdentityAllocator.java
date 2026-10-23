@@ -49,7 +49,7 @@ public final class ClickHouseIdentityAllocator implements ClickHouseRowIdAllocat
             throw new IllegalArgumentException("ClickHouse compatibility row IDs must be positive");
         }
         if (family != ClickHouseFamily.BLOCK && rowId > Integer.MAX_VALUE) {
-            throw new IllegalStateException("ClickHouse " + family.getTableName() + " row IDs exceed CoreProtect's signed 32-bit compatibility range");
+            throw new IllegalStateException("ClickHouse " + family.getTableName() + " row IDs exceed CoreArchive's signed 32-bit compatibility range");
         }
     }
 

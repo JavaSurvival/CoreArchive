@@ -1,12 +1,12 @@
 package net.corearchive.command;
 
+import net.corearchive.CoreArchive;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import net.corearchive.CoreProtect;
 import net.corearchive.config.ConfigHandler;
 import net.corearchive.language.Phrase;
 import net.corearchive.thread.Scheduler;
@@ -105,7 +105,7 @@ public class TeleportCommand {
 
         int chunkX = location.getBlockX() >> 4;
         int chunkZ = location.getBlockZ() >> 4;
-        Scheduler.runTask(CoreProtect.getInstance(), () -> {
+        Scheduler.runTask(CoreArchive.getInstance(), () -> {
             if (!location.getWorld().isChunkLoaded(chunkX, chunkZ)) {
                 location.getWorld().getChunkAt(location);
             }

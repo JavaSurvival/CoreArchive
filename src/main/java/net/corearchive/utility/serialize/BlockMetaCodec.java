@@ -891,7 +891,7 @@ public final class BlockMetaCodec {
 
         private Kind readHeader() {
             if (readUnsignedByte() != MAGIC_FIRST || readUnsignedByte() != MAGIC_SECOND) {
-                throw new IllegalArgumentException("Block metadata does not use the CoreProtect binary format");
+                throw new IllegalArgumentException("Block metadata does not use the CoreArchive binary format");
             }
             int version = readUnsignedByte();
             if (version != VERSION) {

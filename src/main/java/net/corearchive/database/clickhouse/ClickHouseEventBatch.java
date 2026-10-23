@@ -418,7 +418,7 @@ public final class ClickHouseEventBatch implements AutoCloseable {
 
     private void setEntityData(String column, byte[] value) {
         if (value != null && !EntityDataCodec.isEncoded(value)) {
-            throw new IllegalArgumentException("Entity data does not use the CoreProtect binary format");
+            throw new IllegalArgumentException("Entity data does not use the CoreArchive binary format");
         }
         set(column, value);
     }
@@ -429,7 +429,7 @@ public final class ClickHouseEventBatch implements AutoCloseable {
         }
         if (value instanceof byte[]) {
             if (!EntityDataCodec.isEncoded((byte[]) value)) {
-                throw new IllegalArgumentException("Entity data does not use the CoreProtect binary format");
+                throw new IllegalArgumentException("Entity data does not use the CoreArchive binary format");
             }
             return value;
         }

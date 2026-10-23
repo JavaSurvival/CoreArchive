@@ -13,7 +13,7 @@ import java.util.Locale;
 import java.util.jar.JarEntry;
 import java.util.jar.JarInputStream;
 
-import net.corearchive.CoreProtect;
+import net.corearchive.CoreArchive;
 import net.corearchive.config.ConfigHandler;
 import net.corearchive.consumer.Consumer;
 import net.corearchive.database.Database;
@@ -91,7 +91,7 @@ public class Patch {
     }
 
     private static List<String> getPatches() throws Exception {
-        File pluginFile = new File(CoreProtect.class.getProtectionDomain().getCodeSource().getLocation().toURI());
+        File pluginFile = new File(CoreArchive.class.getProtectionDomain().getCodeSource().getLocation().toURI());
         return getPatches(pluginFile);
     }
 
@@ -281,7 +281,7 @@ public class Patch {
                             if (finished == 1) {
                                 processConsumer();
                                 Chat.console("-----");
-                                Chat.console(Phrase.build(Phrase.PATCH_SUCCESS, "v" + CoreProtect.getInstance().getDescription().getVersion()));
+                                Chat.console(Phrase.build(Phrase.PATCH_SUCCESS, "v" + CoreArchive.getInstance().getDescription().getVersion()));
                                 Chat.console("-----");
                             }
                             else if (finished == 0) {

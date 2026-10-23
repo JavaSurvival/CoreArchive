@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
+import net.corearchive.CoreArchive;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -39,7 +40,6 @@ import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
 
-import net.corearchive.CoreProtect;
 import net.corearchive.bukkit.BukkitAdapter;
 import net.corearchive.config.Config;
 import net.corearchive.config.ConfigHandler;
@@ -120,7 +120,7 @@ public final class PlayerInteractListener extends Queue implements Listener {
 
     private static void logLecternBookPlacement(Player player, Block block, ItemStack[] oldContents) {
         Location location = block.getLocation();
-        Scheduler.scheduleSyncDelayedTask(CoreProtect.getInstance(), () -> {
+        Scheduler.scheduleSyncDelayedTask(CoreArchive.getInstance(), () -> {
             BlockState blockState = location.getBlock().getState();
             if (blockState.getType() == Material.LECTERN && blockState instanceof InventoryHolder) {
                 InventoryHolder inventoryHolder = (InventoryHolder) blockState;
@@ -351,7 +351,7 @@ public final class PlayerInteractListener extends Queue implements Listener {
                             boolean oldIsWaxed = BukkitAdapter.ADAPTER.isWaxed(sign);
 
                             if (!oldIsWaxed) {
-                                Scheduler.runTask(CoreProtect.getInstance(), () -> {
+                                Scheduler.runTask(CoreArchive.getInstance(), () -> {
                                     BlockState newState = block.getState();
                                     if (newState instanceof Sign) {
                                         Sign newSign = (Sign) newState;
@@ -409,7 +409,7 @@ public final class PlayerInteractListener extends Queue implements Listener {
 
                             /*
                             BlockState blockState = block.getState();
-                            Bukkit.getServer().getScheduler().runTask(CoreProtect.getInstance(), () -> {
+                            Bukkit.getServer().getScheduler().runTask(CoreArchive.getInstance(), () -> {
                                 try {
                                     BlockData validateBlockData = block.getBlockData();
                                     if (validateBlockData instanceof Lightable && !((Lightable) validateBlockData).isLit()) {
@@ -568,7 +568,7 @@ public final class PlayerInteractListener extends Queue implements Listener {
                         if (handItem.getType() == Material.BRUSH) {
                             BlockState blockState = block.getState();
                             Location blockLocation = block.getLocation();
-                            Scheduler.scheduleSyncDelayedTask(CoreProtect.getInstance(), () -> {
+                            Scheduler.scheduleSyncDelayedTask(CoreArchive.getInstance(), () -> {
                                 Material newType = block.getType();
                                 if (type == newType || (newType != Material.SAND && newType != Material.GRAVEL)) {
                                     return;
@@ -672,7 +672,7 @@ public final class PlayerInteractListener extends Queue implements Listener {
                         if (!exists) {
                             final Player playerFinal = player;
                             final Location locationFinal = crystalLocation;
-                            Scheduler.runTask(CoreProtect.getInstance(), () -> {
+                            Scheduler.runTask(CoreArchive.getInstance(), () -> {
                                 try {
                                     boolean blockExists = false;
                                     int showingBottom = 0;

@@ -324,7 +324,7 @@ public final class ClickHouseDatabase implements AutoCloseable {
 
     private static int toIdentifier(long id, String family) throws SQLException {
         if (id < 1 || id > Integer.MAX_VALUE) {
-            throw new SQLException("ClickHouse " + family + " identifier is outside CoreProtect's positive signed 32-bit range: " + id);
+            throw new SQLException("ClickHouse " + family + " identifier is outside CoreArchive's positive signed 32-bit range: " + id);
         }
         return (int) id;
     }
@@ -477,7 +477,7 @@ public final class ClickHouseDatabase implements AutoCloseable {
 
     private static String requireCoreVersion(String version) {
         if (version == null || !version.matches("\\d+\\.\\d+\\.\\d+")) {
-            throw new IllegalArgumentException("ClickHouse requires a three-part CoreProtect internal database version");
+            throw new IllegalArgumentException("ClickHouse requires a three-part CoreArchive internal database version");
         }
         return version;
     }
@@ -525,7 +525,7 @@ public final class ClickHouseDatabase implements AutoCloseable {
                 }
                 if (databaseUuid.getMostSignificantBits() == 0L && databaseUuid.getLeastSignificantBits() == 0L) {
                     throw new SQLException("ClickHouse database " + database + " uses engine " + engine
-                            + ", but CoreProtect requires a database engine with persistent UUID-backed table identities (for example, Atomic)");
+                            + ", but CoreArchive requires a database engine with persistent UUID-backed table identities (for example, Atomic)");
                 }
             }
         }

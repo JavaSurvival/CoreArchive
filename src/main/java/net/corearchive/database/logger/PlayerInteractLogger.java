@@ -4,7 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Location;
 
-import net.corearchive.CoreProtect;
+import net.corearchive.CoreArchive;
 import net.corearchive.config.Config;
 import net.corearchive.config.ConfigHandler;
 import net.corearchive.database.Database;
@@ -47,7 +47,7 @@ public class PlayerInteractLogger {
 
             CoreProtectPreLogEvent event = new CoreProtectPreLogEvent(user, location.clone(), CoreProtectPreLogEvent.Action.PLAYER_INTERACTION, LookupActions.INTERACTION, blockType, null, null);
             if (Config.getGlobal().API_ENABLED && !Bukkit.isPrimaryThread()) {
-                CoreProtect.getInstance().getServer().getPluginManager().callEvent(event);
+                CoreArchive.getInstance().getServer().getPluginManager().callEvent(event);
             }
 
             if (event.isCancelled()) {

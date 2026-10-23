@@ -12,26 +12,26 @@ import net.corearchive.services.ShutdownService;
 import net.corearchive.utility.Chat;
 
 /**
- * Main class for the CoreProtect plugin
+ * Main class for the CoreArchive plugin
  */
-public final class CoreProtect extends JavaPlugin {
+public final class CoreArchive extends JavaPlugin {
 
-    private static CoreProtect instance;
+    private static CoreArchive instance;
     /**
-     * Get the instance of CoreProtect
+     * Get the instance of CoreArchive
      *
-     * @return This CoreProtect instance
+     * @return This CoreArchive instance
      */
-    public static CoreProtect getInstance() {
+    public static CoreArchive getInstance() {
         return instance;
     }
 
     private final CoreProtectAPI api = new CoreProtectAPI();
 
     /**
-     * Get the CoreProtect API
+     * Get the CoreArchive API
      *
-     * @return The CoreProtect API
+     * @return The CoreArchive API
      */
     public CoreProtectAPI getAPI() {
         return api;

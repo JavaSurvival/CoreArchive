@@ -2,11 +2,11 @@ package net.corearchive.thread;
 
 import java.util.concurrent.TimeUnit;
 
+import net.corearchive.CoreArchive;
 import org.bukkit.Location;
 import org.bukkit.entity.Entity;
 import org.bukkit.scheduler.BukkitTask;
 
-import net.corearchive.CoreProtect;
 import net.corearchive.config.ConfigHandler;
 
 public class Scheduler {
@@ -15,11 +15,11 @@ public class Scheduler {
         throw new IllegalStateException("Scheduler class");
     }
 
-    public static void scheduleSyncDelayedTask(CoreProtect plugin, Runnable task, Object regionData, int delay) {
+    public static void scheduleSyncDelayedTask(CoreArchive plugin, Runnable task, Object regionData, int delay) {
         scheduleSyncDelayedTask(plugin, task, null, regionData, delay);
     }
 
-    public static void scheduleSyncDelayedTask(CoreProtect plugin, Runnable task, Runnable retiredTask, Object regionData, int delay) {
+    public static void scheduleSyncDelayedTask(CoreArchive plugin, Runnable task, Runnable retiredTask, Object regionData, int delay) {
         if (ConfigHandler.isFolia) {
             if (regionData instanceof Location) {
                 Location location = (Location) regionData;
@@ -58,7 +58,7 @@ public class Scheduler {
         }
     }
 
-    public static Object scheduleSyncRepeatingTask(CoreProtect plugin, Runnable task, Object regionData, int delay, int period) {
+    public static Object scheduleSyncRepeatingTask(CoreArchive plugin, Runnable task, Object regionData, int delay, int period) {
         if (ConfigHandler.isFolia) {
             if (regionData instanceof Location) {
                 Location location = (Location) regionData;
@@ -77,7 +77,7 @@ public class Scheduler {
         }
     }
 
-    public static void scheduleAsyncDelayedTask(CoreProtect plugin, Runnable task, int delay) {
+    public static void scheduleAsyncDelayedTask(CoreArchive plugin, Runnable task, int delay) {
         if (ConfigHandler.isFolia) {
             if (delay == 0) {
                 plugin.getServer().getAsyncScheduler().runNow(plugin, value -> task.run());
@@ -96,23 +96,23 @@ public class Scheduler {
         }
     }
 
-    public static void scheduleSyncDelayedTask(CoreProtect plugin, Runnable task, int delay) {
+    public static void scheduleSyncDelayedTask(CoreArchive plugin, Runnable task, int delay) {
         scheduleSyncDelayedTask(plugin, task, null, delay);
     }
 
-    public static void runTask(CoreProtect plugin, Runnable task) {
+    public static void runTask(CoreArchive plugin, Runnable task) {
         scheduleSyncDelayedTask(plugin, task, null, 0);
     }
 
-    public static void runTask(CoreProtect plugin, Runnable task, Object regionData) {
+    public static void runTask(CoreArchive plugin, Runnable task, Object regionData) {
         scheduleSyncDelayedTask(plugin, task, regionData, 0);
     }
 
-    public static void runTaskAsynchronously(CoreProtect plugin, Runnable task) {
+    public static void runTaskAsynchronously(CoreArchive plugin, Runnable task) {
         scheduleAsyncDelayedTask(plugin, task, 0);
     }
 
-    public static void runTaskLaterAsynchronously(CoreProtect plugin, Runnable task, int delay) {
+    public static void runTaskLaterAsynchronously(CoreArchive plugin, Runnable task, int delay) {
         scheduleAsyncDelayedTask(plugin, task, delay);
     }
 

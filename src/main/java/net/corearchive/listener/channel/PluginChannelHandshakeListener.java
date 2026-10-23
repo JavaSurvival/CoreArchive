@@ -9,6 +9,7 @@ import java.util.Set;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
+import net.corearchive.CoreArchive;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -16,7 +17,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.plugin.messaging.PluginMessageListener;
 
-import net.corearchive.CoreProtect;
 import net.corearchive.config.Config;
 import net.corearchive.language.Phrase;
 import net.corearchive.language.Selector;
@@ -92,7 +92,7 @@ public class PluginChannelHandshakeListener implements PluginMessageListener, Li
             getPluginChannelPlayers().add(player.getUniqueId());
             Chat.console(Phrase.build(Phrase.NETWORK_CONNECTION, player.getName(), modId, modVersion, Selector.FIRST));
 
-            player.sendPluginMessage(CoreProtect.getInstance(), pluginChannel, sendRegistered());
+            player.sendPluginMessage(CoreArchive.getInstance(), pluginChannel, sendRegistered());
         }
         catch (Exception exception) {
             Chat.console(exception.toString());

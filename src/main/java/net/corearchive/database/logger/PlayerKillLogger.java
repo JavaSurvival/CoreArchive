@@ -1,10 +1,10 @@
 package net.corearchive.database.logger;
 
+import net.corearchive.CoreArchive;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.EntityType;
 
-import net.corearchive.CoreProtect;
 import net.corearchive.config.Config;
 import net.corearchive.config.ConfigHandler;
 import net.corearchive.database.Database;
@@ -32,7 +32,7 @@ public class PlayerKillLogger {
             Location initialLocation = location.clone();
             CoreProtectPreLogEvent event = new CoreProtectPreLogEvent(user, initialLocation, CoreProtectPreLogEvent.Action.PLAYER_KILL, LookupActions.ENTITY_KILL, null, EntityType.PLAYER, null);
             if (Config.getGlobal().API_ENABLED && !Bukkit.isPrimaryThread()) {
-                CoreProtect.getInstance().getServer().getPluginManager().callEvent(event);
+                CoreArchive.getInstance().getServer().getPluginManager().callEvent(event);
             }
 
             if (event.isCancelled()) {

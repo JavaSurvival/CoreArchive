@@ -16,6 +16,7 @@ import java.util.concurrent.TimeoutException;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import net.corearchive.CoreArchive;
 import org.bukkit.Bukkit;
 import org.bukkit.Chunk;
 import org.bukkit.Location;
@@ -27,7 +28,6 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
 
-import net.corearchive.CoreProtect;
 import net.corearchive.bukkit.BukkitAdapter;
 import net.corearchive.config.ConfigHandler;
 import net.corearchive.consumer.Consumer;
@@ -491,7 +491,7 @@ public final class EntitySpawnRollbackHandler {
 
     private static void scheduleChunkContinuation(ChunkProcessingState state) {
         try {
-            Scheduler.scheduleSyncDelayedTask(CoreProtect.getInstance(), () -> processChunkStep(state), state.chunkLocation, 1);
+            Scheduler.scheduleSyncDelayedTask(CoreArchive.getInstance(), () -> processChunkStep(state), state.chunkLocation, 1);
         }
         catch (Exception e) {
             state.context.cancel();
@@ -513,7 +513,7 @@ public final class EntitySpawnRollbackHandler {
         CompletableFuture<Boolean> completion = new CompletableFuture<>();
         try {
             Runnable retired = () -> completeFrom(completion, scheduleAtLatestLocation(context, work, 1));
-            boolean scheduled = PaperAdapter.ADAPTER.executeEntityTask(CoreProtect.getInstance(), entity, () -> {
+            boolean scheduled = PaperAdapter.ADAPTER.executeEntityTask(CoreArchive.getInstance(), entity, () -> {
                 if (context.isCancelled()) {
                     completion.complete(false);
                     return;
@@ -554,7 +554,7 @@ public final class EntitySpawnRollbackHandler {
 
         CompletableFuture<Boolean> completion = new CompletableFuture<>();
         try {
-            Scheduler.scheduleSyncDelayedTask(CoreProtect.getInstance(), () -> completeFrom(completion, processChunk(context, location.getWorld(), location.getBlockX() >> 4, location.getBlockZ() >> 4, Collections.singletonList(work))), location, delay);
+            Scheduler.scheduleSyncDelayedTask(CoreArchive.getInstance(), () -> completeFrom(completion, processChunk(context, location.getWorld(), location.getBlockX() >> 4, location.getBlockZ() >> 4, Collections.singletonList(work))), location, delay);
         }
         catch (Exception e) {
             context.cancel();
@@ -1157,13 +1157,13 @@ public final class EntitySpawnRollbackHandler {
             completion.complete(false);
         };
         try {
-            boolean scheduled = PaperAdapter.ADAPTER.executeEntityTask(CoreProtect.getInstance(), entity, start, retired, 1L);
+            boolean scheduled = PaperAdapter.ADAPTER.executeEntityTask(CoreArchive.getInstance(), entity, start, retired, 1L);
             if (!scheduled) {
                 if (ConfigHandler.isFolia) {
                     retired.run();
                 }
                 else {
-                    Scheduler.scheduleSyncDelayedTask(CoreProtect.getInstance(), start, entity, 1);
+                    Scheduler.scheduleSyncDelayedTask(CoreArchive.getInstance(), start, entity, 1);
                 }
             }
         }
@@ -1186,7 +1186,7 @@ public final class EntitySpawnRollbackHandler {
             return;
         }
         try {
-            Scheduler.scheduleSyncDelayedTask(CoreProtect.getInstance(), () -> startCreatedTransaction(context, work, completion), location, 1);
+            Scheduler.scheduleSyncDelayedTask(CoreArchive.getInstance(), () -> startCreatedTransaction(context, work, completion), location, 1);
         }
         catch (Exception e) {
             context.cancel();
@@ -1203,13 +1203,13 @@ public final class EntitySpawnRollbackHandler {
             completion.complete(false);
         };
         try {
-            boolean scheduled = PaperAdapter.ADAPTER.executeEntityTask(CoreProtect.getInstance(), entity, continuation, retired, 1L);
+            boolean scheduled = PaperAdapter.ADAPTER.executeEntityTask(CoreArchive.getInstance(), entity, continuation, retired, 1L);
             if (!scheduled) {
                 if (ConfigHandler.isFolia) {
                     retired.run();
                 }
                 else {
-                    Scheduler.scheduleSyncDelayedTask(CoreProtect.getInstance(), continuation, entity, 1);
+                    Scheduler.scheduleSyncDelayedTask(CoreArchive.getInstance(), continuation, entity, 1);
                 }
             }
         }
@@ -1228,7 +1228,7 @@ public final class EntitySpawnRollbackHandler {
             return;
         }
         try {
-            Scheduler.scheduleSyncDelayedTask(CoreProtect.getInstance(), () -> applyCreatedTransactionStep(context, work, completion), location, 1);
+            Scheduler.scheduleSyncDelayedTask(CoreArchive.getInstance(), () -> applyCreatedTransactionStep(context, work, completion), location, 1);
         }
         catch (Exception e) {
             context.cancel();

@@ -7,7 +7,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import net.corearchive.CoreProtect;
+import net.corearchive.CoreArchive;
 import net.corearchive.command.CommandHandler;
 import net.corearchive.command.PurgeCommand;
 import net.corearchive.command.TabHandler;
@@ -42,10 +42,10 @@ public class PluginInitializationService {
      * Initializes plugin components and configurations
      *
      * @param plugin
-     *            The CoreProtect plugin instance
+     *            The CoreArchive plugin instance
      * @return true if initialization was successful, false otherwise
      */
-    public static boolean initializePlugin(CoreProtect plugin) {
+    public static boolean initializePlugin(CoreArchive plugin) {
         // Load language phrases
         Language.loadPhrases();
 
@@ -95,7 +95,7 @@ public class PluginInitializationService {
      * Registers plugin commands
      *
      * @param plugin
-     *            The CoreProtect plugin instance
+     *            The CoreArchive plugin instance
      */
     private static void registerCommands(JavaPlugin plugin) {
         plugin.getCommand("corearchive").setExecutor(CommandHandler.getInstance());
@@ -120,7 +120,7 @@ public class PluginInitializationService {
      * Displays startup messages in the console
      *
      * @param plugin
-     *            The CoreProtect plugin instance
+     *            The CoreArchive plugin instance
      */
     private static void displayStartupMessages(JavaPlugin plugin) {
         PluginDescriptionFile pluginDescription = plugin.getDescription();
@@ -146,9 +146,9 @@ public class PluginInitializationService {
      * Starts background services
      *
      * @param plugin
-     *            The CoreProtect plugin instance
+     *            The CoreArchive plugin instance
      */
-    private static void startBackgroundServices(CoreProtect plugin) {
+    private static void startBackgroundServices(CoreArchive plugin) {
         // Start network handler
         Scheduler.scheduleSyncDelayedTask(plugin, () -> {
             try {
@@ -178,7 +178,7 @@ public class PluginInitializationService {
      * Enables metrics reporting
      *
      * @param plugin
-     *            The CoreProtect plugin instance
+     *            The CoreArchive plugin instance
      */
     private static void enableMetrics(JavaPlugin plugin) {
         try {

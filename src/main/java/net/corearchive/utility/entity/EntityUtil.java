@@ -67,7 +67,7 @@ import org.bukkit.inventory.MerchantRecipe;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
 
-import net.corearchive.CoreProtect;
+import net.corearchive.CoreArchive;
 import net.corearchive.bukkit.BukkitAdapter;
 import net.corearchive.config.ConfigHandler;
 import net.corearchive.database.rollback.Rollback;
@@ -725,7 +725,7 @@ public class EntityUtil {
                 task.run();
             }
             else {
-                Scheduler.runTask(CoreProtect.getInstance(), task, entityLocation);
+                Scheduler.runTask(CoreArchive.getInstance(), task, entityLocation);
             }
         }
         catch (Exception e) {

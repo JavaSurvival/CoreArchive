@@ -208,7 +208,7 @@ public final class ClickHouseSchema {
         for (String suffix : new String[] { "identity_reservation", "retention_high_water", "event_data" }) {
             try (PreparedStatement statement = connection.prepareStatement("SELECT 1 FROM " + names.table(suffix) + " LIMIT 1"); ResultSet resultSet = statement.executeQuery()) {
                 if (resultSet.next()) {
-                    throw new SQLException("ClickHouse table " + names.rawTable(suffix) + " contains data without CoreProtect storage metadata");
+                    throw new SQLException("ClickHouse table " + names.rawTable(suffix) + " contains data without CoreArchive storage metadata");
                 }
             }
         }

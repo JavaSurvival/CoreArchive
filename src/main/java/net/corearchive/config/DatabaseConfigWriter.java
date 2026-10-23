@@ -56,7 +56,7 @@ public final class DatabaseConfigWriter {
                 Files.move(temporary, configFile, StandardCopyOption.ATOMIC_MOVE, StandardCopyOption.REPLACE_EXISTING);
             }
             catch (AtomicMoveNotSupportedException exception) {
-                throw new IOException("The CoreProtect config filesystem does not support atomic replacement", exception);
+                throw new IOException("The CoreArchive config filesystem does not support atomic replacement", exception);
             }
             moved = true;
             forceDirectory(directory);

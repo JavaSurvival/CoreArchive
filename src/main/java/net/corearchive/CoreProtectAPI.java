@@ -52,9 +52,9 @@ import net.corearchive.utility.MaterialUtils;
 import net.corearchive.utility.ErrorReporter;
 
 /**
- * The main API class for CoreProtect.
+ * The main API class for CoreArchive.
  * <p>
- * This class provides methods for interacting with the CoreProtect database,
+ * This class provides methods for interacting with the CoreArchive database,
  * including lookups, rollbacks, and logging operations.
  */
 public class CoreProtectAPI extends Queue {
@@ -466,7 +466,7 @@ public class CoreProtectAPI extends Queue {
     }
 
     /**
-     * Checks if the CoreProtect API is enabled.
+     * Checks if the CoreArchive API is enabled.
      * 
      * @return True if the API is enabled
      */

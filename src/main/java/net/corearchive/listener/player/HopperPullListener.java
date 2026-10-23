@@ -11,7 +11,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
 
-import net.corearchive.CoreProtect;
+import net.corearchive.CoreArchive;
 import net.corearchive.config.Config;
 import net.corearchive.config.ConfigHandler;
 import net.corearchive.thread.Scheduler;
@@ -82,7 +82,7 @@ public final class HopperPullListener {
         });
 
         if (pending.scheduled.compareAndSet(false, true)) {
-            Scheduler.runTask(CoreProtect.getInstance(), () -> capturePendingPull(transactionId, pending), pending.location);
+            Scheduler.runTask(CoreArchive.getInstance(), () -> capturePendingPull(transactionId, pending), pending.location);
         }
     }
 

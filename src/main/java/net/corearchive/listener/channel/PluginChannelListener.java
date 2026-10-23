@@ -5,11 +5,11 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.util.Random;
 
+import net.corearchive.CoreArchive;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 
-import net.corearchive.CoreProtect;
 import net.corearchive.config.Config;
 import net.corearchive.language.Phrase;
 import net.corearchive.language.Selector;
@@ -213,6 +213,6 @@ public class PluginChannelListener implements Listener {
             return;
         }
 
-        player.sendPluginMessage(CoreProtect.getInstance(), pluginChannel, data);
+        player.sendPluginMessage(CoreArchive.getInstance(), pluginChannel, data);
     }
 }

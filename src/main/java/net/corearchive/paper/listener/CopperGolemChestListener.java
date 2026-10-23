@@ -7,6 +7,7 @@ import java.util.Set;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
+import net.corearchive.CoreArchive;
 import org.bukkit.GameEvent;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -24,7 +25,6 @@ import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
 
 import io.papermc.paper.event.entity.ItemTransportingEntityValidateTargetEvent;
-import net.corearchive.CoreProtect;
 import net.corearchive.bukkit.BukkitAdapter;
 import net.corearchive.config.Config;
 import net.corearchive.config.ConfigHandler;
@@ -45,7 +45,7 @@ public final class CopperGolemChestListener implements Listener {
     private static final int CLOSE_FINALIZE_MAX_ATTEMPTS = 3;
     private static final int CLOSE_FALLBACK_MAX_ATTEMPTS = 2;
 
-    private final CoreProtect plugin;
+    private final CoreArchive plugin;
     private final Map<UUID, OpenInteraction> openInteractions = new ConcurrentHashMap<>();
     private final Map<UUID, TransactionKey> transportTargets = new ConcurrentHashMap<>();
     private final Map<UUID, RecentEmptyCopperChestSkip> recentEmptyCopperChestSkips = new ConcurrentHashMap<>();
@@ -53,7 +53,7 @@ public final class CopperGolemChestListener implements Listener {
     private final Map<TransactionKey, Set<UUID>> emptySkipGolemsByContainerKey = new ConcurrentHashMap<>();
     private volatile long lastCleanupMillis;
 
-    public CopperGolemChestListener(CoreProtect plugin) {
+    public CopperGolemChestListener(CoreArchive plugin) {
         this.plugin = plugin;
     }
 
