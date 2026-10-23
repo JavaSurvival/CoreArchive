@@ -20,8 +20,8 @@ public final class ClickHouseJdbc implements AutoCloseable {
 
     public ClickHouseJdbc(ClickHouseJdbcConfig config) {
         Objects.requireNonNull(config, "config");
-        dataSource = pool(config, "CoreProtect-ClickHouse", 10);
-        auxiliaryDataSource = pool(config, "CoreProtect-ClickHouse-Identity", 4);
+        dataSource = pool(config, "CoreArchive-ClickHouse", 10);
+        auxiliaryDataSource = pool(config, "CoreArchive-ClickHouse-Identity", 4);
     }
 
     private static HikariDataSource pool(ClickHouseJdbcConfig config, String name, int maximumPoolSize) {

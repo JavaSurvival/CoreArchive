@@ -17,7 +17,7 @@ final class EntityUuidConflictReporter {
     private UUID lastUuid;
 
     EntityUuidConflictReporter() {
-        this(System::nanoTime, message -> Logger.getLogger("CoreProtect").warning("[CoreProtect] " + message));
+        this(System::nanoTime, message -> Logger.getLogger("CoreArchive").warning("[CoreArchive] " + message));
     }
 
     EntityUuidConflictReporter(LongSupplier clock, Consumer<String> warning) {

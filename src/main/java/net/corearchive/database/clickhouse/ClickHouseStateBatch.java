@@ -146,7 +146,7 @@ final class ClickHouseStateBatch implements AutoCloseable {
             throw new IllegalArgumentException("ClickHouse rollback row IDs must be positive");
         }
         if (update.rolledBack < 0 || update.rolledBack > 3) {
-            throw new IllegalArgumentException("CoreProtect rolled-back state must be between 0 and 3");
+            throw new IllegalArgumentException("CoreArchive rolled-back state must be between 0 and 3");
         }
         rollbackUpdates.computeIfAbsent(update.family, ignored -> new LinkedHashMap<>()).put(update.rowId, update);
     }

@@ -310,7 +310,7 @@ public class Rollback extends RollbackUtil {
 
             if (user != null && verbose && preview == 0 && !actionList.contains(LookupActions.ITEM)) {
                 Integer chunks = chunkList.size();
-                Chat.sendMessage(user, Color.DARK_AQUA + "CoreProtect " + Color.WHITE + "- " + Phrase.build(Phrase.ROLLBACK_CHUNKS_FOUND, chunks.toString(), (chunks == 1 ? Selector.FIRST : Selector.SECOND)));
+                Chat.sendMessage(user, Color.DARK_AQUA + "CoreArchive " + Color.WHITE + "- " + Phrase.build(Phrase.ROLLBACK_CHUNKS_FOUND, chunks.toString(), (chunks == 1 ? Selector.FIRST : Selector.SECOND)));
             }
 
             final String finalUserString = userString;
@@ -465,7 +465,7 @@ public class Rollback extends RollbackUtil {
             Chat.console(Phrase.build(Phrase.ROLLBACK_ABORTED));
         }
         else {
-            Chat.sendMessage(user, Color.DARK_AQUA + "CoreProtect " + Color.WHITE + "- " + Phrase.build(Phrase.ROLLBACK_ABORTED));
+            Chat.sendMessage(user, Color.DARK_AQUA + "CoreArchive " + Color.WHITE + "- " + Phrase.build(Phrase.ROLLBACK_ABORTED));
         }
     }
 
@@ -880,7 +880,7 @@ public class Rollback extends RollbackUtil {
 
         if (verbose && user != null && preview == 0 && !actionList.contains(LookupActions.ITEM)) {
             Integer chunks = totalChunks;
-            Chat.sendMessage(user, Color.DARK_AQUA + "CoreProtect " + Color.WHITE + "- " + Phrase.build(Phrase.ROLLBACK_CHUNKS_MODIFIED, chunkCount.toString(), chunks.toString(), (chunks == 1 ? Selector.FIRST : Selector.SECOND)));
+            Chat.sendMessage(user, Color.DARK_AQUA + "CoreArchive " + Color.WHITE + "- " + Phrase.build(Phrase.ROLLBACK_CHUNKS_MODIFIED, chunkCount.toString(), chunks.toString(), (chunks == 1 ? Selector.FIRST : Selector.SECOND)));
         }
 
         return true;

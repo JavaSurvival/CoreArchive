@@ -348,8 +348,8 @@ public class Consumer extends Process implements Runnable, Thread.UncaughtExcept
             persistenceHalted = true;
         }
         ConfigHandler.databaseReachable = false;
-        Chat.sendConsoleMessage(Color.RED + "[CoreProtect] " + Phrase.build(Phrase.DATABASE_PERSISTENCE_HALTED));
-        Chat.sendConsoleMessage(Color.RED + "[CoreProtect] " + Phrase.build(Phrase.DATABASE_QUEUE_LOSS));
+        Chat.sendConsoleMessage(Color.RED + "[CoreArchive] " + Phrase.build(Phrase.DATABASE_PERSISTENCE_HALTED));
+        Chat.sendConsoleMessage(Color.RED + "[CoreArchive] " + Phrase.build(Phrase.DATABASE_QUEUE_LOSS));
     }
 
     public static OperationStartResult claimPurge() {

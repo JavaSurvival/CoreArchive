@@ -99,7 +99,7 @@ public class ShutdownService {
             BaseInspector.shutdown();
             ConfigHandler.performDisable();
             if (loggingComplete) {
-                Chat.console(Phrase.build(Phrase.DISABLE_SUCCESS, "CoreProtect v" + plugin.getDescription().getVersion()));
+                Chat.console(Phrase.build(Phrase.DISABLE_SUCCESS, "CoreArchive v" + plugin.getDescription().getVersion()));
             }
         }
         catch (Exception e) {

@@ -25,7 +25,7 @@ import net.corearchive.utility.ErrorReporter;
 
 public class PluginChannelHandshakeListener implements PluginMessageListener, Listener {
 
-    public static final String pluginChannel = "coreprotect:handshake";
+    public static final String pluginChannel = "corearchive:handshake";
     private final int networkingProtocolVersion = 1;
     private final Set<UUID> pluginChannelPlayers;
     private static PluginChannelHandshakeListener instance;
@@ -62,7 +62,7 @@ public class PluginChannelHandshakeListener implements PluginMessageListener, Li
     }
 
     private void handleHandshake(String channel, Player player, byte[] bytes) {
-        if (!player.hasPermission("coreprotect.networking")) {
+        if (!player.hasPermission("corearchive.networking")) {
             return;
         }
 

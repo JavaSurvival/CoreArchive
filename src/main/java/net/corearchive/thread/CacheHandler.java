@@ -29,7 +29,7 @@ public class CacheHandler implements Runnable {
     private static volatile Thread thread;
 
     public static void startThread() {
-        Thread cacheThread = new Thread(new CacheHandler(), "CoreProtect-Cache");
+        Thread cacheThread = new Thread(new CacheHandler(), "CoreArchive-Cache");
         cacheThread.setDaemon(true);
         thread = cacheThread;
         cacheThread.start();

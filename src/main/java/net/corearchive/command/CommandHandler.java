@@ -31,7 +31,7 @@ public class CommandHandler implements CommandExecutor {
     public boolean onCommand(CommandSender user, Command command, String commandLabel, String[] argumentArray) {
         String commandName = command.getName().toLowerCase(Locale.ROOT);
 
-        if (commandName.equals("core") || commandName.equals("coreprotect") || commandName.equals("co")) {
+        if (commandName.equals("carchive") || commandName.equals("corearchive") || commandName.equals("ca")) {
             int resultc = argumentArray.length;
             if (resultc > -1) {
                 String corecommand = "help";
@@ -40,43 +40,43 @@ public class CommandHandler implements CommandExecutor {
                 }
                 boolean permission = false;
                 if (!permission) {
-                    if (user.hasPermission("coreprotect.rollback") && (corecommand.equals("rollback") || corecommand.equals("rb") || corecommand.equals("ro") || corecommand.equals("apply") || corecommand.equals("cancel"))) {
+                    if (user.hasPermission("corearchive.rollback") && (corecommand.equals("rollback") || corecommand.equals("rb") || corecommand.equals("ro") || corecommand.equals("apply") || corecommand.equals("cancel"))) {
                         permission = true;
                     }
-                    else if (user.hasPermission("coreprotect.restore") && (corecommand.equals("restore") || corecommand.equals("rs") || corecommand.equals("re") || corecommand.equals("undo") || corecommand.equals("apply") || corecommand.equals("cancel"))) {
+                    else if (user.hasPermission("corearchive.restore") && (corecommand.equals("restore") || corecommand.equals("rs") || corecommand.equals("re") || corecommand.equals("undo") || corecommand.equals("apply") || corecommand.equals("cancel"))) {
                         permission = true;
                     }
-                    else if (user.hasPermission("coreprotect.inspect") && (corecommand.equals("i") || corecommand.equals("inspect") || corecommand.equals("inspector"))) {
+                    else if (user.hasPermission("corearchive.inspect") && (corecommand.equals("i") || corecommand.equals("inspect") || corecommand.equals("inspector"))) {
                         permission = true;
                     }
-                    else if (user.hasPermission("coreprotect.help") && corecommand.equals("help")) {
+                    else if (user.hasPermission("corearchive.help") && corecommand.equals("help")) {
                         permission = true;
                     }
-                    else if (user.hasPermission("coreprotect.purge") && corecommand.equals("purge")) {
+                    else if (user.hasPermission("corearchive.purge") && corecommand.equals("purge")) {
                         permission = true;
                     }
-                    else if (user.hasPermission("coreprotect.lookup") && (corecommand.equals("l") || corecommand.equals("lookup") || corecommand.equals("page"))) {
+                    else if (user.hasPermission("corearchive.lookup") && (corecommand.equals("l") || corecommand.equals("lookup") || corecommand.equals("page"))) {
                         permission = true;
                     }
-                    else if (user.hasPermission("coreprotect.lookup.near") && corecommand.equals("near")) {
+                    else if (user.hasPermission("corearchive.lookup.near") && corecommand.equals("near")) {
                         permission = true;
                     }
-                    else if (user.hasPermission("coreprotect.teleport") && (corecommand.equals("tp") || corecommand.equals("teleport"))) {
+                    else if (user.hasPermission("corearchive.teleport") && (corecommand.equals("tp") || corecommand.equals("teleport"))) {
                         permission = true;
                     }
-                    else if (user.hasPermission("coreprotect.reload") && corecommand.equals("reload")) {
+                    else if (user.hasPermission("corearchive.reload") && corecommand.equals("reload")) {
                         permission = true;
                     }
-                    else if (user.hasPermission("coreprotect.status") && (corecommand.equals("status") || corecommand.equals("stats") || corecommand.equals("version"))) {
+                    else if (user.hasPermission("corearchive.status") && (corecommand.equals("status") || corecommand.equals("stats") || corecommand.equals("version"))) {
                         permission = true;
                     }
-                    else if (user.hasPermission("coreprotect.consumer") && corecommand.equals("consumer")) {
+                    else if (user.hasPermission("corearchive.consumer") && corecommand.equals("consumer")) {
                         permission = true;
                     }
-                    else if (user.hasPermission("coreprotect.networking") && corecommand.equals("network-debug")) {
+                    else if (user.hasPermission("corearchive.networking") && corecommand.equals("network-debug")) {
                         permission = true;
                     }
-                    else if (user.hasPermission("coreprotect.give") && corecommand.equals("give")) {
+                    else if (user.hasPermission("corearchive.give") && corecommand.equals("give")) {
                         permission = true;
                     }
                 }
@@ -128,18 +128,18 @@ public class CommandHandler implements CommandExecutor {
                 }
                 else if (corecommand.equals("migrate-db")) {
                     if (!VersionUtils.validDonationKey()) {
-                        Chat.sendMessage(user, Color.DARK_AQUA + "CoreProtect " + Color.WHITE + "- " + Phrase.build(Phrase.DONATION_KEY_REQUIRED));
+                        Chat.sendMessage(user, Color.DARK_AQUA + "CoreArchive " + Color.WHITE + "- " + Phrase.build(Phrase.DONATION_KEY_REQUIRED));
                     }
                     else {
                         Extensions.runDatabaseMigration(corecommand, user, argumentArray);
                     }
                 }
                 else {
-                    Chat.sendMessage(user, Color.DARK_AQUA + "CoreProtect " + Color.WHITE + "- " + Phrase.build(Phrase.COMMAND_NOT_FOUND, Color.WHITE, "/co " + corecommand));
+                    Chat.sendMessage(user, Color.DARK_AQUA + "CoreArchive " + Color.WHITE + "- " + Phrase.build(Phrase.COMMAND_NOT_FOUND, Color.WHITE, "/ca " + corecommand));
                 }
             }
             else {
-                Chat.sendMessage(user, Color.DARK_AQUA + "CoreProtect " + Color.WHITE + "- " + Phrase.build(Phrase.MISSING_PARAMETERS, Color.WHITE, "/co <parameters>"));
+                Chat.sendMessage(user, Color.DARK_AQUA + "CoreArchive " + Color.WHITE + "- " + Phrase.build(Phrase.MISSING_PARAMETERS, Color.WHITE, "/ca <parameters>"));
             }
 
             if (user.isOp() && versionAlert.get(user.getName()) == null) {
@@ -153,13 +153,13 @@ public class CommandHandler implements CommandExecutor {
                         public void run() {
                             try {
                                 Thread.sleep(5000);
-                                Chat.sendMessage(user, Color.WHITE + "----- " + Color.DARK_AQUA + Phrase.build(Phrase.UPDATE_HEADER, "CoreProtect" + (communityEdition ? " " + ConfigHandler.COMMUNITY_EDITION : "")) + Color.WHITE + " -----");
+                                Chat.sendMessage(user, Color.WHITE + "----- " + Color.DARK_AQUA + Phrase.build(Phrase.UPDATE_HEADER, "CoreArchive" + (communityEdition ? " " + ConfigHandler.COMMUNITY_EDITION : "")) + Color.WHITE + " -----");
                                 if (latestVersion != null) {
-                                    Chat.sendMessage(user, Color.DARK_AQUA + Phrase.build(Phrase.UPDATE_NOTICE, Color.WHITE, "CoreProtect CE v" + latestVersion));
+                                    Chat.sendMessage(user, Color.DARK_AQUA + Phrase.build(Phrase.UPDATE_NOTICE, Color.WHITE, "CoreArchive CE v" + latestVersion));
                                     Chat.sendMessage(user, Color.DARK_AQUA + Phrase.build(Phrase.LINK_DOWNLOAD, Color.WHITE, "www.coreprotect.net/download/"));
                                 }
                                 else {
-                                    Chat.sendMessage(user, Color.DARK_AQUA + Phrase.build(Phrase.UPDATE_NOTICE, Color.WHITE, "CoreProtect v" + latestEdgeVersion));
+                                    Chat.sendMessage(user, Color.DARK_AQUA + Phrase.build(Phrase.UPDATE_NOTICE, Color.WHITE, "CoreArchive v" + latestEdgeVersion));
                                     Chat.sendMessage(user, Color.DARK_AQUA + Phrase.build(Phrase.LINK_DOWNLOAD, Color.WHITE, "www.coreprotect.net/latest/"));
                                 }
                             }

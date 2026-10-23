@@ -31,17 +31,17 @@ public class InteractionLookup {
             }
 
             if (command == null) {
-                if (commandSender.hasPermission("coreprotect.co")) {
-                    command = "co";
+                if (commandSender.hasPermission("corearchive.ca")) {
+                    command = "ca";
                 }
-                else if (commandSender.hasPermission("coreprotect.core")) {
-                    command = "core";
+                else if (commandSender.hasPermission("corearchive.carchive")) {
+                    command = "carchive";
                 }
-                else if (commandSender.hasPermission("coreprotect.coreprotect")) {
-                    command = "coreprotect";
+                else if (commandSender.hasPermission("corearchive.corearchive")) {
+                    command = "corearchive";
                 }
                 else {
-                    command = "co";
+                    command = "ca";
                 }
             }
 
@@ -134,10 +134,10 @@ public class InteractionLookup {
             }
             else {
                 if (rowMax > count && count > 0) {
-                    result = Color.DARK_AQUA + "CoreProtect " + Color.WHITE + "- " + Phrase.build(Phrase.NO_RESULTS_PAGE, Selector.SECOND);
+                    result = Color.DARK_AQUA + "CoreArchive " + Color.WHITE + "- " + Phrase.build(Phrase.NO_RESULTS_PAGE, Selector.SECOND);
                 }
                 else {
-                    result = Color.DARK_AQUA + "CoreProtect " + Color.WHITE + "- " + Phrase.build(Phrase.NO_DATA_LOCATION, Selector.THIRD);
+                    result = Color.DARK_AQUA + "CoreArchive " + Color.WHITE + "- " + Phrase.build(Phrase.NO_DATA_LOCATION, Selector.THIRD);
                 }
             }
 

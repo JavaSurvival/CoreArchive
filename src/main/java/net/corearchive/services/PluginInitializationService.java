@@ -98,12 +98,12 @@ public class PluginInitializationService {
      *            The CoreProtect plugin instance
      */
     private static void registerCommands(JavaPlugin plugin) {
-        plugin.getCommand("coreprotect").setExecutor(CommandHandler.getInstance());
-        plugin.getCommand("coreprotect").setTabCompleter(new TabHandler());
-        plugin.getCommand("core").setExecutor(CommandHandler.getInstance());
-        plugin.getCommand("core").setTabCompleter(new TabHandler());
-        plugin.getCommand("co").setExecutor(CommandHandler.getInstance());
-        plugin.getCommand("co").setTabCompleter(new TabHandler());
+        plugin.getCommand("corearchive").setExecutor(CommandHandler.getInstance());
+        plugin.getCommand("corearchive").setTabCompleter(new TabHandler());
+        plugin.getCommand("carchive").setExecutor(CommandHandler.getInstance());
+        plugin.getCommand("carchive").setTabCompleter(new TabHandler());
+        plugin.getCommand("ca").setExecutor(CommandHandler.getInstance());
+        plugin.getCommand("ca").setTabCompleter(new TabHandler());
     }
 
     /**

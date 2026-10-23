@@ -7,7 +7,7 @@ import java.util.StringJoiner;
 import net.corearchive.model.action.LookupActions;
 
 /**
- * Selects the rows that one /co purge removes on the relational backends (SQLite, MySQL, DuckDB).
+ * Selects the rows that one /ca purge removes on the relational backends (SQLite, MySQL, DuckDB).
  *
  * <p>
  * co_entity has no world or type column: each row belongs to the co_block kill row whose data column holds its

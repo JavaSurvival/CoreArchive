@@ -63,7 +63,7 @@ public class ContainerInspector extends BaseInspector {
                             ConfigHandler.lookupEntityContainer.remove(player.getName());
                             ConfigHandler.lookupType.remove(player.getName());
                             ConfigHandler.lookupCommand.remove(player.getName());
-                            Chat.sendMessage(player, Color.DARK_AQUA + "CoreProtect " + Color.WHITE + "- " + Phrase.build(Phrase.NO_DATA_LOCATION, Selector.SECOND));
+                            Chat.sendMessage(player, Color.DARK_AQUA + "CoreArchive " + Color.WHITE + "- " + Phrase.build(Phrase.NO_DATA_LOCATION, Selector.SECOND));
                             return;
                         }
 

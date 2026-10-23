@@ -57,8 +57,8 @@ public final class PlayerInteractEntityListener extends Queue implements Listene
             }
             PlayerInteractListener.lastInspectorEvent.put(playerUuid, new Object[] { now, event.getHand() });
 
-            if (!player.hasPermission("coreprotect.inspect")) {
-                Chat.sendMessage(player, Color.DARK_AQUA + "CoreProtect " + Color.WHITE + "- " + Phrase.build(Phrase.NO_PERMISSION));
+            if (!player.hasPermission("corearchive.inspect")) {
+                Chat.sendMessage(player, Color.DARK_AQUA + "CoreArchive " + Color.WHITE + "- " + Phrase.build(Phrase.NO_PERMISSION));
                 ConfigHandler.inspecting.put(player.getName(), false);
                 event.setCancelled(true);
                 return;
@@ -123,8 +123,8 @@ public final class PlayerInteractEntityListener extends Queue implements Listene
             Object[] previousInspection = PlayerInteractListener.lastInspectorEvent.get(playerUuid);
             if (previousInspection == null || now - (long) previousInspection[0] >= 100L) {
                 PlayerInteractListener.lastInspectorEvent.put(playerUuid, new Object[] { now, event.getHand() });
-                if (!player.hasPermission("coreprotect.inspect")) {
-                    Chat.sendMessage(player, Color.DARK_AQUA + "CoreProtect " + Color.WHITE + "- " + Phrase.build(Phrase.NO_PERMISSION));
+                if (!player.hasPermission("corearchive.inspect")) {
+                    Chat.sendMessage(player, Color.DARK_AQUA + "CoreArchive " + Color.WHITE + "- " + Phrase.build(Phrase.NO_PERMISSION));
                     ConfigHandler.inspecting.put(player.getName(), false);
                 }
                 else {

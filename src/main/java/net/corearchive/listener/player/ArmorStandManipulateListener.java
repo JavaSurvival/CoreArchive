@@ -32,21 +32,21 @@ import net.corearchive.utility.LookupThrottle;
 public final class ArmorStandManipulateListener extends Queue implements Listener {
 
     public static void inspectHangingTransactions(final Location location, final Player finalPlayer) {
-        if (!finalPlayer.hasPermission("coreprotect.inspect")) {
-            Chat.sendMessage(finalPlayer, Color.DARK_AQUA + "CoreProtect " + Color.WHITE + "- " + Phrase.build(Phrase.NO_PERMISSION));
+        if (!finalPlayer.hasPermission("corearchive.inspect")) {
+            Chat.sendMessage(finalPlayer, Color.DARK_AQUA + "CoreArchive " + Color.WHITE + "- " + Phrase.build(Phrase.NO_PERMISSION));
             ConfigHandler.inspecting.put(finalPlayer.getName(), false);
             return;
         }
         if (ConfigHandler.converterRunning) {
-            Chat.sendMessage(finalPlayer, Color.DARK_AQUA + "CoreProtect " + Color.WHITE + "- " + Phrase.build(Phrase.UPGRADE_IN_PROGRESS));
+            Chat.sendMessage(finalPlayer, Color.DARK_AQUA + "CoreArchive " + Color.WHITE + "- " + Phrase.build(Phrase.UPGRADE_IN_PROGRESS));
             return;
         }
         if (ConfigHandler.purgeRunning) {
-            Chat.sendMessage(finalPlayer, Color.DARK_AQUA + "CoreProtect " + Color.WHITE + "- " + Phrase.build(Phrase.PURGE_IN_PROGRESS));
+            Chat.sendMessage(finalPlayer, Color.DARK_AQUA + "CoreArchive " + Color.WHITE + "- " + Phrase.build(Phrase.PURGE_IN_PROGRESS));
             return;
         }
         if (!LookupThrottle.tryAcquire(finalPlayer.getName(), 100)) {
-            Chat.sendMessage(finalPlayer, Color.DARK_AQUA + "CoreProtect " + Color.WHITE + "- " + Phrase.build(Phrase.DATABASE_BUSY));
+            Chat.sendMessage(finalPlayer, Color.DARK_AQUA + "CoreArchive " + Color.WHITE + "- " + Phrase.build(Phrase.DATABASE_BUSY));
             return;
         }
 
@@ -63,7 +63,7 @@ public final class ArmorStandManipulateListener extends Queue implements Listene
                         statement.close();
                     }
                     else {
-                        Chat.sendMessage(finalPlayer, Color.DARK_AQUA + "CoreProtect " + Color.WHITE + "- " + Phrase.build(Phrase.DATABASE_BUSY));
+                        Chat.sendMessage(finalPlayer, Color.DARK_AQUA + "CoreArchive " + Color.WHITE + "- " + Phrase.build(Phrase.DATABASE_BUSY));
                     }
                 }
                 catch (Exception e) {

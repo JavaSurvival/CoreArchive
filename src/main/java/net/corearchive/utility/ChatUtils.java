@@ -201,7 +201,7 @@ public class ChatUtils {
 
     // This theoretically initializes the component code, to prevent gson adapter errors
     public static void sendConsoleComponentStartup(ConsoleCommandSender consoleSender, String string) {
-        Chat.sendComponent(consoleSender, Color.RESET + "[CoreProtect] " + string + Chat.COMPONENT_TAG_OPEN + Chat.COMPONENT_POPUP + "| | " + Chat.COMPONENT_TAG_CLOSE);
+        Chat.sendComponent(consoleSender, Color.RESET + "[CoreArchive] " + string + Chat.COMPONENT_TAG_OPEN + Chat.COMPONENT_POPUP + "| | " + Chat.COMPONENT_TAG_CLOSE);
     }
 
     public static String filterComponent(boolean condition, String component) {

@@ -115,7 +115,7 @@ public final class EntityInteractionLookup {
                 result.add(ChatUtils.getPageNavigation(resolvedCommand, page, totalPages));
             }
             else if (!found) {
-                result.add(rowMax > count && count > 0 ? Color.DARK_AQUA + "CoreProtect " + Color.WHITE + "- " + Phrase.build(Phrase.NO_RESULTS_PAGE, Selector.SECOND) : noData());
+                result.add(rowMax > count && count > 0 ? Color.DARK_AQUA + "CoreArchive " + Color.WHITE + "- " + Phrase.build(Phrase.NO_RESULTS_PAGE, Selector.SECOND) : noData());
             }
 
             ConfigHandler.lookupEntityInteraction.put(commandSender.getName(), entitySpawnRowId);
@@ -175,17 +175,17 @@ public final class EntityInteractionLookup {
         if (command != null) {
             return command;
         }
-        if (commandSender.hasPermission("coreprotect.co")) {
-            return "co";
+        if (commandSender.hasPermission("corearchive.ca")) {
+            return "ca";
         }
-        if (commandSender.hasPermission("coreprotect.core")) {
-            return "core";
+        if (commandSender.hasPermission("corearchive.carchive")) {
+            return "carchive";
         }
-        return commandSender.hasPermission("coreprotect.coreprotect") ? "coreprotect" : "co";
+        return commandSender.hasPermission("corearchive.corearchive") ? "corearchive" : "ca";
     }
 
     private static String noData() {
-        return Color.DARK_AQUA + "CoreProtect " + Color.WHITE + "- " + Phrase.build(Phrase.NO_DATA_LOCATION, Selector.THIRD);
+        return Color.DARK_AQUA + "CoreArchive " + Color.WHITE + "- " + Phrase.build(Phrase.NO_DATA_LOCATION, Selector.THIRD);
     }
 
     private static void clearLookup(CommandSender commandSender) {

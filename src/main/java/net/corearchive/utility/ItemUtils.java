@@ -31,7 +31,7 @@ public class ItemUtils {
     private static final Map<ItemStack, Integer> GIVABLE_ITEMS = Collections.synchronizedMap(new LinkedHashMap<>());
 
     private static final Object UNSERIALIZABLE_VALUE = new Object();
-    private static final Logger LOGGER = Logger.getLogger("CoreProtect");
+    private static final Logger LOGGER = Logger.getLogger("CoreArchive");
     private static final int MAX_SANITIZE_ATTEMPTS = 2;
     private static final Pattern TYPE_TOKEN_PATTERN = Pattern.compile("([A-Za-z_$][A-Za-z0-9_$\\.]*)\\{");
     private static final Pattern REGISTRY_LOCATION_PATTERN = Pattern.compile("location=([^,\\]\\s]+)");
@@ -464,7 +464,7 @@ public class ItemUtils {
             }
 
             if (sanitized && ConfigHandler.EDITION_BRANCH.contains("-dev")) {
-                LOGGER.warning("CoreProtect failed to serialize metadata after targeted type sanitization.");
+                LOGGER.warning("CoreArchive failed to serialize metadata after targeted type sanitization.");
             }
             ErrorReporter.report(failure, ConfigHandler.EDITION_BRANCH.contains("-dev"));
         }
@@ -656,7 +656,7 @@ public class ItemUtils {
     }
 
     private static void logSanitizedMetadata(Set<String> problematicTypes, String registryLocation) {
-        StringBuilder message = new StringBuilder("CoreProtect sanitized unsupported metadata during byte serialization (types: ");
+        StringBuilder message = new StringBuilder("CoreArchive sanitized unsupported metadata during byte serialization (types: ");
         message.append(String.join(", ", problematicTypes));
         if (registryLocation != null) {
             message.append(", missing key: ").append(registryLocation);

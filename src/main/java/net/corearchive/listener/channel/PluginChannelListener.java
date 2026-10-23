@@ -19,7 +19,7 @@ import net.corearchive.utility.WorldUtils;
 
 public class PluginChannelListener implements Listener {
 
-    public static final String pluginChannel = "coreprotect:data";
+    public static final String pluginChannel = "corearchive:data";
     private static PluginChannelListener instance;
 
     public PluginChannelListener() {
@@ -197,7 +197,7 @@ public class PluginChannelListener implements Listener {
                 break;
         }
 
-        commandSender.sendMessage(Color.DARK_AQUA + "CoreProtect " + Color.WHITE + "- " + Phrase.build(Phrase.NETWORK_TEST));
+        commandSender.sendMessage(Color.DARK_AQUA + "CoreArchive " + Color.WHITE + "- " + Phrase.build(Phrase.NETWORK_TEST));
     }
 
     private void send(CommandSender commandSender, byte[] msgBytes) {
@@ -209,7 +209,7 @@ public class PluginChannelListener implements Listener {
     }
 
     private void sendCoreProtectData(Player player, byte[] data) {
-        if (!player.hasPermission("coreprotect.networking")) {
+        if (!player.hasPermission("corearchive.networking")) {
             return;
         }
 

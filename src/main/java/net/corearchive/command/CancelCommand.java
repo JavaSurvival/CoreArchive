@@ -30,7 +30,7 @@ public class CancelCommand {
                     }
                 }
                 if (!valid) {
-                    Chat.sendMessage(user, Color.DARK_AQUA + "CoreProtect " + Color.WHITE + "- " + Phrase.build(Phrase.NO_ROLLBACK, Selector.FIRST));
+                    Chat.sendMessage(user, Color.DARK_AQUA + "CoreArchive " + Color.WHITE + "- " + Phrase.build(Phrase.NO_ROLLBACK, Selector.FIRST));
                 }
                 else {
                     ConfigHandler.lastRollback.remove(user.getName());
@@ -38,7 +38,7 @@ public class CancelCommand {
                 }
             }
             else {
-                Chat.sendMessage(user, Color.DARK_AQUA + "CoreProtect " + Color.WHITE + "- " + Phrase.build(Phrase.NO_ROLLBACK, Selector.FIRST));
+                Chat.sendMessage(user, Color.DARK_AQUA + "CoreArchive " + Color.WHITE + "- " + Phrase.build(Phrase.NO_ROLLBACK, Selector.FIRST));
             }
         }
         catch (Exception e) {

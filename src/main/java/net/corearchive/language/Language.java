@@ -85,7 +85,7 @@ public class Language {
         phrases.put(Phrase.HELP_EXCLUDE_1, "Exclude blocks/users.");
         phrases.put(Phrase.HELP_EXCLUDE_2, "Examples: [e:stone], [e:Notch], [e:stone,Notch]");
         phrases.put(Phrase.HELP_FILTER_1, "Filter chat, command, or sign text.");
-        phrases.put(Phrase.HELP_FILTER_2, "Examples: [a:command f:/co], [a:sign f:-Shop]");
+        phrases.put(Phrase.HELP_FILTER_2, "Examples: [a:command f:/ca], [a:sign f:-Shop]");
         phrases.put(Phrase.HELP_HEADER, "{0} Help");
         phrases.put(Phrase.HELP_INCLUDE_1, "Include specific blocks/entities.");
         phrases.put(Phrase.HELP_INCLUDE_2, "Examples: [i:stone], [i:zombie], [i:stone,wood,bedrock]");
@@ -95,7 +95,7 @@ public class Language {
         phrases.put(Phrase.HELP_INSPECT_4, "Place a block to see what block was broken at that location.");
         phrases.put(Phrase.HELP_INSPECT_5, "Place a block in liquid (etc) to see who placed it.");
         phrases.put(Phrase.HELP_INSPECT_6, "Right-click on a door, chest, etc, to see who last used it.");
-        phrases.put(Phrase.HELP_INSPECT_7, "Tip: You can use just \"/co i\" for quicker access.");
+        phrases.put(Phrase.HELP_INSPECT_7, "Tip: You can use just \"/ca i\" for quicker access.");
         phrases.put(Phrase.HELP_INSPECT_COMMAND, "Turns the block inspector on or off.");
         phrases.put(Phrase.HELP_LIST, "Displays a list of all commands.");
         phrases.put(Phrase.HELP_LOOKUP_1, "Command shortcut.");

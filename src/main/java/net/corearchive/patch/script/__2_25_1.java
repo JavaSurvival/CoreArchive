@@ -229,7 +229,7 @@ public class __2_25_1 {
         String families = "family IN(" + ClickHouseLookupIndex.FAMILIES + ")";
         String lower = null;
         int ranges = 0;
-        java.util.logging.Logger logger = java.util.logging.Logger.getLogger("CoreProtect");
+        java.util.logging.Logger logger = java.util.logging.Logger.getLogger("CoreArchive");
         logger.info("ClickHouse 25.1: building lookup metadata; existing event payloads are retained.");
         while (true) {
             String after = lower == null ? "" : " PREWHERE " + key + ">" + lower + " AND " + keyPrefix(lower, true);

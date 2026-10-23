@@ -36,7 +36,7 @@ public abstract class BaseInspector {
      */
     public static void startLookups() {
         ThreadPoolExecutor executor = new ThreadPoolExecutor(LOOKUP_THREADS, LOOKUP_THREADS, LOOKUP_THREAD_IDLE_SECONDS, TimeUnit.SECONDS, new ArrayBlockingQueue<>(LOOKUP_QUEUE_SIZE), runnable -> {
-            Thread thread = new Thread(runnable, "CoreProtect-Inspector-" + lookupThreadCount.incrementAndGet());
+            Thread thread = new Thread(runnable, "CoreArchive-Inspector-" + lookupThreadCount.incrementAndGet());
             thread.setDaemon(true);
             return thread;
         });
@@ -77,7 +77,7 @@ public abstract class BaseInspector {
         }
         catch (RejectedExecutionException e) {
             LookupThrottle.release(player.getName());
-            Chat.sendMessage(player, Color.DARK_AQUA + "CoreProtect " + Color.WHITE + "- " + Phrase.build(Phrase.DATABASE_BUSY));
+            Chat.sendMessage(player, Color.DARK_AQUA + "CoreArchive " + Color.WHITE + "- " + Phrase.build(Phrase.DATABASE_BUSY));
         }
         catch (RuntimeException | Error e) {
             LookupThrottle.release(player.getName());
@@ -154,22 +154,22 @@ public abstract class BaseInspector {
 
     private void acquireInspection(Player player) throws InspectionException {
         if (ConfigHandler.converterRunning) {
-            throw new InspectionException(Color.DARK_AQUA + "CoreProtect " + Color.WHITE + "- " + Phrase.build(Phrase.UPGRADE_IN_PROGRESS));
+            throw new InspectionException(Color.DARK_AQUA + "CoreArchive " + Color.WHITE + "- " + Phrase.build(Phrase.UPGRADE_IN_PROGRESS));
         }
 
         if (ConfigHandler.purgeRunning) {
-            throw new InspectionException(Color.DARK_AQUA + "CoreProtect " + Color.WHITE + "- " + Phrase.build(Phrase.PURGE_IN_PROGRESS));
+            throw new InspectionException(Color.DARK_AQUA + "CoreArchive " + Color.WHITE + "- " + Phrase.build(Phrase.PURGE_IN_PROGRESS));
         }
 
         if (!LookupThrottle.tryAcquire(player.getName(), 100)) {
-            throw new InspectionException(Color.DARK_AQUA + "CoreProtect " + Color.WHITE + "- " + Phrase.build(Phrase.DATABASE_BUSY));
+            throw new InspectionException(Color.DARK_AQUA + "CoreArchive " + Color.WHITE + "- " + Phrase.build(Phrase.DATABASE_BUSY));
         }
     }
 
     protected Connection getDatabaseConnection(Player player) throws Exception {
         Connection connection = Database.getConnection(true);
         if (connection == null) {
-            throw new InspectionException(Color.DARK_AQUA + "CoreProtect " + Color.WHITE + "- " + Phrase.build(Phrase.DATABASE_BUSY));
+            throw new InspectionException(Color.DARK_AQUA + "CoreArchive " + Color.WHITE + "- " + Phrase.build(Phrase.DATABASE_BUSY));
         }
 
         return connection;

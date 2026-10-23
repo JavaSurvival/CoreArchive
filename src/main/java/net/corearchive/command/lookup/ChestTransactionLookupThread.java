@@ -35,7 +35,7 @@ public class ChestTransactionLookupThread implements Runnable {
     @Override
     public void run() {
         if (!LookupThrottle.tryAcquire(player.getName(), 50)) {
-            Chat.sendMessage(player, Color.DARK_AQUA + "CoreProtect " + Color.WHITE + "- " + Phrase.build(Phrase.DATABASE_BUSY));
+            Chat.sendMessage(player, Color.DARK_AQUA + "CoreArchive " + Color.WHITE + "- " + Phrase.build(Phrase.DATABASE_BUSY));
             return;
         }
 
@@ -50,7 +50,7 @@ public class ChestTransactionLookupThread implements Runnable {
                 statement.close();
             }
             else {
-                Chat.sendMessage(player, Color.DARK_AQUA + "CoreProtect " + Color.WHITE + "- " + Phrase.build(Phrase.DATABASE_BUSY));
+                Chat.sendMessage(player, Color.DARK_AQUA + "CoreArchive " + Color.WHITE + "- " + Phrase.build(Phrase.DATABASE_BUSY));
             }
         }
         catch (Exception e) {

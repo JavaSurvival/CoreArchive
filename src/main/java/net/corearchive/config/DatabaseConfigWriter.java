@@ -30,7 +30,7 @@ public final class DatabaseConfigWriter {
     public static synchronized void persistDatabaseType(DatabaseType type) throws IOException {
         Path configFile = Paths.get(ConfigHandler.path).resolve(ConfigFile.CONFIG);
         if (!Files.isRegularFile(configFile, LinkOption.NOFOLLOW_LINKS)) {
-            throw new IOException("CoreProtect config is not a regular file: " + configFile);
+            throw new IOException("CoreArchive config is not a regular file: " + configFile);
         }
 
         byte[] original = Files.readAllBytes(configFile);
@@ -41,7 +41,7 @@ public final class DatabaseConfigWriter {
 
         Path directory = configFile.toAbsolutePath().getParent();
         if (directory == null) {
-            throw new IOException("CoreProtect config has no parent directory: " + configFile);
+            throw new IOException("CoreArchive config has no parent directory: " + configFile);
         }
 
         Path temporary = Files.createTempFile(directory, ".config.yml.", ".tmp");

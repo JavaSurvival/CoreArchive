@@ -69,7 +69,7 @@ public class WorldUtils extends Queue {
     public static int matchWorld(String name) {
         int id = -1;
         try {
-            // Parse wid:# parameter used internally for /co tp click events
+            // Parse wid:# parameter used internally for /ca tp click events
             if (name.startsWith("wid:")) {
                 String nameWid = name.replaceFirst("wid:", "");
                 if (nameWid.length() > 0 && nameWid.equals(nameWid.replaceAll("[^0-9]", ""))) {

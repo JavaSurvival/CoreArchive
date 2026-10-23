@@ -98,7 +98,7 @@ public class ConfigHandler extends Queue {
     public static final String PATCH_VERSION = "24.1";
     public static final String LATEST_VERSION = "26.3";
     private static final String DEFAULT_SQLITE_DATABASE = "database.db";
-    public static String path = "plugins/CoreProtect/";
+    public static String path = "plugins/CoreArchive/";
     public static String sqlite = DEFAULT_SQLITE_DATABASE;
     public static String duckdb = "database.duckdb";
     public static String duckdbMemoryLimit = "512MB";
@@ -220,7 +220,7 @@ public class ConfigHandler extends Queue {
             Integer storedId = names.get(value);
             String storedValue = identifiers.get(id);
             if ((storedId != null && storedId != id) || (storedValue != null && !storedValue.equals(value))) {
-                throw new IllegalStateException("CoreProtect " + kind.name().toLowerCase(Locale.ROOT) + " identifier " + id + "='" + value + "' conflicts with cached " + storedId + "='" + storedValue + "'");
+                throw new IllegalStateException("CoreArchive " + kind.name().toLowerCase(Locale.ROOT) + " identifier " + id + "='" + value + "' conflicts with cached " + storedId + "='" + storedValue + "'");
             }
             return true;
         }
@@ -404,7 +404,7 @@ public class ConfigHandler extends Queue {
         if (global.hasOption("database-type")) {
             ConfigHandler.databaseType = DatabaseType.parse(global.DATABASE_TYPE, global.MYSQL);
             if (global.hasOption("use-mysql") && global.MYSQL != ConfigHandler.databaseType.isMySQL()) {
-                Chat.sendConsoleMessage(Color.YELLOW + "[CoreProtect] " + Phrase.build(Phrase.DATABASE_TYPE_OVERRIDE));
+                Chat.sendConsoleMessage(Color.YELLOW + "[CoreArchive] " + Phrase.build(Phrase.DATABASE_TYPE_OVERRIDE));
             }
         }
         else {
@@ -490,7 +490,7 @@ public class ConfigHandler extends Queue {
 
         if (ConfigHandler.databaseType.isEmbedded()) {
             try {
-                File tempFile = File.createTempFile("CoreProtect_" + System.currentTimeMillis(), ".tmp");
+                File tempFile = File.createTempFile("CoreArchive_" + System.currentTimeMillis(), ".tmp");
                 tempFile.setExecutable(true);
 
                 boolean canExecute = false;
@@ -525,7 +525,7 @@ public class ConfigHandler extends Queue {
                         Config global = Config.getGlobal();
                         global.DATABASE_TYPE = DatabaseType.SQLITE.name().toLowerCase(Locale.ROOT);
                         global.MYSQL = false;
-                        Chat.sendConsoleMessage(Color.YELLOW + "[CoreProtect] " + Phrase.build(Phrase.DATABASE_FALLBACK, DatabaseType.DUCKDB.getDisplayName(), DatabaseType.SQLITE.getDisplayName()));
+                        Chat.sendConsoleMessage(Color.YELLOW + "[CoreArchive] " + Phrase.build(Phrase.DATABASE_FALLBACK, DatabaseType.DUCKDB.getDisplayName(), DatabaseType.SQLITE.getDisplayName()));
                     }
                     finally {
                         duckDBFallbackAllowed = false;
@@ -898,15 +898,15 @@ public class ConfigHandler extends Queue {
                     while (rs.next()) {
                         if (unixtimestamp < waitTime) {
                             if (!lockMessage) {
-                                Chat.sendConsoleMessage("[CoreProtect] " + Phrase.build(Phrase.DATABASE_LOCKED_1));
+                                Chat.sendConsoleMessage("[CoreArchive] " + Phrase.build(Phrase.DATABASE_LOCKED_1));
                                 lockMessage = true;
                             }
                             Thread.sleep(1000);
                         }
                         else {
-                            Chat.sendConsoleMessage(Color.RED + "[CoreProtect] " + Phrase.build(Phrase.DATABASE_LOCKED_2));
-                            Chat.sendConsoleMessage(Color.GREY + "[CoreProtect] " + Phrase.build(Phrase.DATABASE_LOCKED_3));
-                            Chat.sendConsoleMessage(Color.GREY + "[CoreProtect] " + Phrase.build(Phrase.DATABASE_LOCKED_4));
+                            Chat.sendConsoleMessage(Color.RED + "[CoreArchive] " + Phrase.build(Phrase.DATABASE_LOCKED_2));
+                            Chat.sendConsoleMessage(Color.GREY + "[CoreArchive] " + Phrase.build(Phrase.DATABASE_LOCKED_3));
+                            Chat.sendConsoleMessage(Color.GREY + "[CoreArchive] " + Phrase.build(Phrase.DATABASE_LOCKED_4));
                             return false;
                         }
 

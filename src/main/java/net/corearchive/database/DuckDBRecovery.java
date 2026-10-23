@@ -63,7 +63,7 @@ public final class DuckDBRecovery {
             reportRecoveryFailure();
         }
         else if (reportFailure) {
-            Chat.sendConsoleMessage(Color.YELLOW + "[CoreProtect] " + Phrase.build(Phrase.DATABASE_RECOVERY_STARTED));
+            Chat.sendConsoleMessage(Color.YELLOW + "[CoreArchive] " + Phrase.build(Phrase.DATABASE_RECOVERY_STARTED));
         }
         if (isHalted()) {
             Consumer.haltPersistence();
@@ -152,7 +152,7 @@ public final class DuckDBRecovery {
         }
 
         if (recovered) {
-            Chat.sendConsoleMessage(Color.GREEN + "[CoreProtect] " + Phrase.build(Phrase.DATABASE_RECOVERY_SUCCESS));
+            Chat.sendConsoleMessage(Color.GREEN + "[CoreArchive] " + Phrase.build(Phrase.DATABASE_RECOVERY_SUCCESS));
             return;
         }
         if (isHalted()) {
@@ -284,7 +284,7 @@ public final class DuckDBRecovery {
     }
 
     private static void reportRecoveryFailure() {
-        Chat.sendConsoleMessage(Color.RED + "[CoreProtect] "
+        Chat.sendConsoleMessage(Color.RED + "[CoreArchive] "
                 + Phrase.build(Phrase.DATABASE_RECOVERY_FAILED, Integer.toString(MAXIMUM_RECOVERY_ATTEMPTS)));
     }
 

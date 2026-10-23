@@ -25,7 +25,7 @@ public final class DuckDBNativeSupport {
     public static <T> T openDatabase(DatabaseOpener<T> opener) throws SQLException {
         Thread thread = Thread.currentThread();
         String originalName = thread.getName();
-        thread.setName("CoreProtect-DuckDB");
+        thread.setName("CoreArchive-DuckDB");
         try {
             return opener.open();
         }

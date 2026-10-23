@@ -68,7 +68,7 @@ public class TabHandler implements TabCompleter {
         else if (args.length == 2) {
             return handleSecondArgCompletions(sender, argument0, args[1], paramState);
         }
-        else if (args.length == 3 && argument0.equals("purge") && sender.hasPermission("coreprotect.purge")) {
+        else if (args.length == 3 && argument0.equals("purge") && sender.hasPermission("corearchive.purge")) {
             return handlePurgeThirdArgCompletions(args[1], args[2]);
         }
         else if (hasLookupCommand(argument0, sender) && (!argument0.equals("l") && !argument0.equals("lookup") || !paramState.hasPage)) {
@@ -82,16 +82,16 @@ public class TabHandler implements TabCompleter {
         String arg = argument.toLowerCase(Locale.ROOT);
         List<String> completions = new ArrayList<>();
 
-        addCompletionIfPermitted(sender, "coreprotect.help", "help", completions);
-        addCompletionIfPermitted(sender, "coreprotect.inspect", "inspect", completions);
-        addCompletionIfPermitted(sender, "coreprotect.rollback", "rollback", completions);
-        addCompletionIfPermitted(sender, "coreprotect.restore", "restore", completions);
-        addCompletionIfPermitted(sender, "coreprotect.lookup", "lookup", completions);
-        addCompletionIfPermitted(sender, "coreprotect.purge", "purge", completions);
-        addCompletionIfPermitted(sender, "coreprotect.reload", "reload", completions);
-        addCompletionIfPermitted(sender, "coreprotect.status", "status", completions);
-        addCompletionIfPermitted(sender, "coreprotect.lookup.near", "near", completions);
-        addCompletionIfPermitted(sender, "coreprotect.restore", "undo", completions);
+        addCompletionIfPermitted(sender, "corearchive.help", "help", completions);
+        addCompletionIfPermitted(sender, "corearchive.inspect", "inspect", completions);
+        addCompletionIfPermitted(sender, "corearchive.rollback", "rollback", completions);
+        addCompletionIfPermitted(sender, "corearchive.restore", "restore", completions);
+        addCompletionIfPermitted(sender, "corearchive.lookup", "lookup", completions);
+        addCompletionIfPermitted(sender, "corearchive.purge", "purge", completions);
+        addCompletionIfPermitted(sender, "corearchive.reload", "reload", completions);
+        addCompletionIfPermitted(sender, "corearchive.status", "status", completions);
+        addCompletionIfPermitted(sender, "corearchive.lookup.near", "near", completions);
+        addCompletionIfPermitted(sender, "corearchive.restore", "undo", completions);
 
         return StringUtil.copyPartialMatches(arg, completions, new ArrayList<>(completions.size()));
     }
@@ -103,11 +103,11 @@ public class TabHandler implements TabCompleter {
     }
 
     private boolean hasLookupPermission(CommandSender sender) {
-        return sender.hasPermission("coreprotect.lookup") || sender.hasPermission("coreprotect.rollback") || sender.hasPermission("coreprotect.restore");
+        return sender.hasPermission("corearchive.lookup") || sender.hasPermission("corearchive.rollback") || sender.hasPermission("corearchive.restore");
     }
 
     private boolean hasTimePermission(CommandSender sender) {
-        return hasLookupPermission(sender) || sender.hasPermission("coreprotect.purge");
+        return hasLookupPermission(sender) || sender.hasPermission("corearchive.purge");
     }
 
     private boolean hasRadiusPermission(CommandSender sender) {
@@ -115,11 +115,11 @@ public class TabHandler implements TabCompleter {
     }
 
     private boolean hasPagePermission(CommandSender sender) {
-        return sender.hasPermission("coreprotect.lookup") || sender.hasPermission("coreprotect.lookup.near") || sender.hasPermission("coreprotect.inspect");
+        return sender.hasPermission("corearchive.lookup") || sender.hasPermission("corearchive.lookup.near") || sender.hasPermission("corearchive.inspect");
     }
 
     private boolean hasLookupCommand(String cmd, CommandSender sender) {
-        return (sender.hasPermission("coreprotect.lookup") && (cmd.equals("l") || cmd.equals("lookup"))) || (sender.hasPermission("coreprotect.rollback") && (cmd.equals("rollback") || cmd.equals("rb") || cmd.equals("ro"))) || (sender.hasPermission("coreprotect.restore") && (cmd.equals("restore") || cmd.equals("rs") || cmd.equals("re")));
+        return (sender.hasPermission("corearchive.lookup") && (cmd.equals("l") || cmd.equals("lookup"))) || (sender.hasPermission("corearchive.rollback") && (cmd.equals("rollback") || cmd.equals("rb") || cmd.equals("ro"))) || (sender.hasPermission("corearchive.restore") && (cmd.equals("restore") || cmd.equals("rs") || cmd.equals("re")));
     }
 
     private boolean isActionParam(String lastArg, String currentArg) {
@@ -442,11 +442,11 @@ public class TabHandler implements TabCompleter {
         String argument0 = cmd0.toLowerCase(Locale.ROOT);
         String argument1 = cmd1.toLowerCase(Locale.ROOT);
 
-        if (argument0.equals("help") && sender.hasPermission("coreprotect.help")) {
+        if (argument0.equals("help") && sender.hasPermission("corearchive.help")) {
             List<String> completions = new ArrayList<>(Arrays.asList(HELP));
             return StringUtil.copyPartialMatches(argument1, completions, new ArrayList<>(completions.size()));
         }
-        else if (argument0.equals("purge") && sender.hasPermission("coreprotect.purge")) {
+        else if (argument0.equals("purge") && sender.hasPermission("corearchive.purge")) {
             List<String> completions = new ArrayList<>(Arrays.asList("t:", "r:", "i:", "e:", "a:kill"));
             return StringUtil.copyPartialMatches(argument1, completions, new ArrayList<>(completions.size()));
         }

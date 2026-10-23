@@ -49,17 +49,17 @@ public class ChestTransactionLookup {
             }
 
             if (command == null) {
-                if (commandSender.hasPermission("coreprotect.co")) {
-                    command = "co";
+                if (commandSender.hasPermission("corearchive.ca")) {
+                    command = "ca";
                 }
-                else if (commandSender.hasPermission("coreprotect.core")) {
-                    command = "core";
+                else if (commandSender.hasPermission("corearchive.carchive")) {
+                    command = "carchive";
                 }
-                else if (commandSender.hasPermission("coreprotect.coreprotect")) {
-                    command = "coreprotect";
+                else if (commandSender.hasPermission("corearchive.corearchive")) {
+                    command = "corearchive";
                 }
                 else {
-                    command = "co";
+                    command = "ca";
                 }
             }
 
@@ -205,10 +205,10 @@ public class ChestTransactionLookup {
             }
             else {
                 if (rowMax > count && count > 0) {
-                    result.add(Color.DARK_AQUA + "CoreProtect " + Color.WHITE + "- " + Phrase.build(Phrase.NO_RESULTS_PAGE, Selector.SECOND));
+                    result.add(Color.DARK_AQUA + "CoreArchive " + Color.WHITE + "- " + Phrase.build(Phrase.NO_RESULTS_PAGE, Selector.SECOND));
                 }
                 else {
-                    result.add(Color.DARK_AQUA + "CoreProtect " + Color.WHITE + "- " + Phrase.build(Phrase.NO_DATA_LOCATION, Selector.SECOND));
+                    result.add(Color.DARK_AQUA + "CoreArchive " + Color.WHITE + "- " + Phrase.build(Phrase.NO_DATA_LOCATION, Selector.SECOND));
                 }
             }
 
