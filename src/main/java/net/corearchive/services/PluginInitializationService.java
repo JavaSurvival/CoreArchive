@@ -84,8 +84,7 @@ public class PluginInitializationService {
             // Start background services
             startBackgroundServices(plugin);
 
-            // Start metrics
-            enableMetrics(plugin);
+            // bStats is not started: plugin ID 2876 belongs to upstream CoreProtect
         }
 
         return start;

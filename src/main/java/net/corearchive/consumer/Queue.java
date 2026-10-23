@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 
+import net.corearchive.CoreArchive;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -24,7 +25,6 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-import net.corearchive.CoreArchive;
 import net.corearchive.bukkit.BukkitAdapter;
 import net.corearchive.config.Config;
 import net.corearchive.config.ConfigHandler;
@@ -119,12 +119,21 @@ public class Queue {
         return itemId;
     }
 
+    // ID rows keep the in-memory caches consistent with the database, so they are still written in lookup-only mode
+    private static boolean isIdentityInsert(int action) {
+        return action == Process.WORLD_INSERT || action == Process.MATERIAL_INSERT || action == Process.ART_INSERT || action == Process.ENTITY_INSERT || action == Process.BLOCKDATA_INSERT;
+    }
+
     private static boolean queueStandardData(Object[] data, String[] user, Object object, boolean first, long reservation) {
         return queueStandardData(data, user, object, first, null, null, reservation);
     }
 
     private static synchronized <T> boolean queueStandardData(Object[] data, String[] user, Object object, boolean first, Map<Integer, ? extends Map<Integer, T>> additionalMaps, T additionalData, long reservation) {
         boolean rollbackPublication = Process.isRollbackPublication((int) data[1], object);
+        if (ConfigHandler.LOOKUP_ONLY && !rollbackPublication && !isIdentityInsert((int) data[1])) {
+            Consumer.completeReservation(reservation, 1);
+            return false;
+        }
         if (Consumer.isPersistenceHalted()) {
             Consumer.completeReservation(reservation, 1);
             if (rollbackPublication) {

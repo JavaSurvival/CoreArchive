@@ -97,6 +97,8 @@ public class ConfigHandler extends Queue {
     public static final String MINECRAFT_VERSION = "1.16.5";
     public static final String PATCH_VERSION = "24.1";
     public static final String LATEST_VERSION = "26.3";
+    // CoreArchive only reads an archived database; live events are never written to it
+    public static final boolean LOOKUP_ONLY = true;
     private static final String DEFAULT_SQLITE_DATABASE = "database.db";
     public static String path = "plugins/CoreArchive/";
     public static String sqlite = DEFAULT_SQLITE_DATABASE;
