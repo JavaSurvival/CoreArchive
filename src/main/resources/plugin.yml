@@ -14,17 +14,17 @@ commands:
   ca:
     description: Utilize the plugin
     permission: corearchive.ca
-    permission-message: §3CoreArchive §f- You do not have permission to do that.
+    permission-message: §6CoreArchive §f- You do not have permission to do that.
     usage: /<command> <params>
   carchive:
     description: Utilize the plugin
     permission: corearchive.carchive
-    permission-message: §3CoreArchive §f- You do not have permission to do that.
+    permission-message: §6CoreArchive §f- You do not have permission to do that.
     usage: /<command> <params>
   corearchive:
     description: Utilize the plugin
     permission: corearchive.corearchive
-    permission-message: §3CoreArchive §f- You do not have permission to do that.
+    permission-message: §6CoreArchive §f- You do not have permission to do that.
     usage: /<command> <params>
 permissions:
     corearchive.*:

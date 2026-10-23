@@ -27,7 +27,7 @@ import net.md_5.bungee.api.chat.hover.content.Text;
 
 public class SpigotHandler extends SpigotAdapter implements SpigotInterface {
 
-    public static ChatColor DARK_AQUA = ChatColor.of("#31b0e8");
+    public static ChatColor DARK_AQUA = ChatColor.of("#e8a531");
 
     public SpigotHandler() {
         Color.DARK_AQUA = SpigotHandler.DARK_AQUA.toString();

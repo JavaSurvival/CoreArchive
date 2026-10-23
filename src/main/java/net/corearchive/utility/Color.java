@@ -25,7 +25,7 @@ public final class Color {
     /**
      * Represents dark blue (aqua).
      */
-    public static String DARK_AQUA = ChatColor.DARK_AQUA.toString();
+    public static String DARK_AQUA = ChatColor.GOLD.toString(); // CoreArchive accent; replaced by an amber hex colour on Spigot/Paper
 
     /**
      * Represents dark red.

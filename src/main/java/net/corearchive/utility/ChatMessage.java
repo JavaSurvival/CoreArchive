@@ -5,7 +5,7 @@ import org.bukkit.ChatColor;
 public class ChatMessage {
 
     /**
-     * Returns the plugin name with the DARK_AQUA chat color.
+     * Returns the plugin name with the accent (DARK_AQUA) chat color.
      */
     String pluginName = Color.DARK_AQUA + "CoreArchive";
 
